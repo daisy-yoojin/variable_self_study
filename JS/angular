@@ -1,0 +1,20 @@
+What is Angular vs AgularJS?
+* Angular
+  - based on "TypeScript" (CLI)
+    -TypeScript is a superset of ES6 and compatible with ES5.
+
+* AgularJS
+  - based on "JavaScript"
+  - also benefits of ES6 like:
+        lambda operators, iterators or reflection’s mechanism.
+  - use terms of scope and controller. 
+        to scope a variable => can add many variables that will be visible in View
+            as well as in controller
+        has a concept of rootScope.
+            = What is rootScope?
+                the scope created on the HTML element that contains the ng-app directive
+
+                
+
+++++++++++++++++++++++
+need to check TypeScript

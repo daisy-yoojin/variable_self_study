@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple board</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script>
+            var app = angular.module("myApp",[]);
+            app.controller("myCtrl", function($scope){
+                $scope.boardlist = [
+                    {id: 1, title: 'Title1', writer: 'Writer1'}, 
+                    {id: 2, title: 'Title2', writer: 'Writer2'}
+                ];
+                $scope.boardForm={};
+                $scope.remove = function(id){
+                    if(!id) return;
+                    var idx = -1;
+                    for(var i =0; i<$scope.boardlist.length; i++){
+                        if($scope.boardlist[i].id === id){
+                            idx = i;
+                            break;
+                        }
+                    }
+                    if(idx === -1) return ;
+                    $scope.boardlist.splice(idx,1);
+                }
+                $scope.addBoard = function(){
+                    var newId = ! $scope.boardlist.length?1 :$scope.boardlist[$scope.boardlist.length-1].id+1;
+                    var newItem ={
+                        id: newId,
+                        title: $scope.boardForm.title,
+                        writer: $scope.boardForm.writer,
+                    };
+                    $scope.boardlist.push(newItem);
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <div ng-app="myApp" ng-controller="myCtrl">
+            <form ng-submit="addBoard()">
+                <table>
+                    <tr>
+                        <td>
+                            Title:
+                        </td>
+                        <td>
+                            <input type="text" ng-model="boardForm.title" autofocus>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Name:
+                        </td>
+                        <td>
+                            <input type="text" ng-model="boardForm.writer">
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit">Add</button>
+
+            </form>
+            <table border="1">
+                <tr> 
+                    <td style="width: 50px">No.</td>
+                    <td style="width: 200px">Title</td>
+                    <td style="width: 50px">Name</td>
+                    <td style="width: 50px"></td>
+                </tr>
+                <tr ng-repeat="item in boardlist">
+                    <td style="width: 50px">{{$index+1}}</td>
+                    <td style="width: 200px">{{item.title}}</td>
+                    <td style="width: 50px">{{item.writer}}</td>
+                    <td style="width: 50px">
+                        <button type="button" ng-click="remove(item.id)">삭제</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
