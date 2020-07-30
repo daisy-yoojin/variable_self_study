@@ -180,10 +180,14 @@
         val firstItem = list(0)
     
     - 연산
+        ~ sum
         // 앞에 붙이기는 :: 또는 +: 연산자
         // 리스트 두개를 붙이기는 ++ 또는 :::연산자
         // 뒤에 붙이기는 :+연산자(immutable list에서 효율적인 방법이 아님)
-        val concatenated = 0 :: list ++ list :+ 1000
+        val concatenated = 0 :: list ++ list :+ 1000 // List(0, a, 1, true, a, 1, true, 1000)
+
+        ~ Diff
+        val diffList = List(1,2,3,4) diff List(2,3) // List(1, 4)
 
 
     
