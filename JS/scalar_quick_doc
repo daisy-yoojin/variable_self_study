@@ -258,3 +258,6 @@
             val personMap = Map(("솔라",1), ("문별",2), ("휘인",3))  
             def findByName(name:String) = personMap.getOrElse(name, 4)  
             val findSolar = findByName("솔라")  // 1
+            
+* 상속
+    -  공통으로 상속받는 타입 중 최상위 타입으로 결정
