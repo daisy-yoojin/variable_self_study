@@ -279,7 +279,9 @@
 
 * Mutable Collection
     - 변경 가능 --> 꼭 필요한 경우 사용
+    - immutable Collection 권장 --> 기본 Collection
+    - ArrayBuffer는 자바에서 배열로 구현되는 java.util.ArrayList와 유사
     - mutable Collection을 사용할 때는 앞에 mutable을 붙여 사용
         ~ mutable.ArrayBuffer, mutable.ListBuffer, mutable.Set, mutable.Map
-    - immutable Collection 권장 --> 기본 Collection
+    
      
