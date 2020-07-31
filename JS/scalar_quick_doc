@@ -284,4 +284,18 @@
     - mutable Collection을 사용할 때는 앞에 mutable을 붙여 사용
         ~ mutable.ArrayBuffer, mutable.ListBuffer, mutable.Set, mutable.Map
     
-     
+    - 배열로 구현되는 ArrayBuffer
+        val arrayBuffer = mutable.ArrayBuffer(1, 2, 3)   
+        arrayBuffer += 4                // ① ArrayBuffer(1, 2, 3, 4)
+        arrayBuffer -= 1                // ① ArrayBuffer(2, 3, 4)
+        arrayBuffer ++= List(5, 6, 7)   // ① ArrayBuffer(2, 3, 4, 5, 6, 7)
+    - Linked list로 구현되는 ListBuffer
+        val listBuffer = mutable.ListBuffer("a", "b", "c") // ② ListBuffer(a, b, c)
+    - Mutable Set
+        val hashSet = mutable.Set(0.1, 0.2, 0.3)  
+        hashSet ++= mutable.Set(5)      // ③ Set(0.3, 5.0, 0.2, 0.1)    
+    - Mutable Map
+        val hashMap = mutable.Map("one" -> 1, "two" -> 2)  
+        hashMap ++= Map("five" -> 5, "six" -> 6)    // ④ Map(one -> 1, six -> 6, five -> 5, two -> 2)
+
+        
