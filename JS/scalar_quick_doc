@@ -297,5 +297,3 @@
     - Mutable Map
         val hashMap = mutable.Map("one" -> 1, "two" -> 2)  
         hashMap ++= Map("five" -> 5, "six" -> 6)    // ④ Map(one -> 1, six -> 6, five -> 5, two -> 2)
-
-        
