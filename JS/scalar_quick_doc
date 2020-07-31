@@ -277,3 +277,6 @@
         // Map도 같은 원리로 동작
         val map:Map[String, Animal] = Map("Animal" -> new Animal(), "Dog" -> new Dog())
 
+* Mutable Collection
+    - 변경 가능
+     
