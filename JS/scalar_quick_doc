@@ -252,3 +252,9 @@
         ~ 더하기 : ++ 
             map1 ++ map2
         ~ 중복된 키("three")의 값은 마지막 값으로 결정
+    
+    - find 
+        ~ List, Set과 같은 형태
+            val personMap = Map(("솔라",1), ("문별",2), ("휘인",3))  
+            def findByName(name:String) = personMap.getOrElse(name, 4)  
+            val findSolar = findByName("솔라")  // 1
