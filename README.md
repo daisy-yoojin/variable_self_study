@@ -2,7 +2,7 @@
 
 - Commit rule (2020-08-07 ~)
 
-​	<strong>"Commit / Update / Record | LanguageType / READgitME | comments "</strong>
+​	<strong>"Commit / Update / Record | LanguageType / README | comments "</strong>
 
 ---
 
