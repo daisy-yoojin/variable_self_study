@@ -1,8 +1,14 @@
 import numpy as np
 from bs4 import BeautifulSoup
 
+import os 
+from selenium import webdriver 
+from webdriver_manager.chrome import ChromeDriverManager
+
 import requests
 import re
+
+driver = webdriver.Chrome()
 
 # def main():
 #     r = requests.get("http://www.megabox.co.kr/movie/")
