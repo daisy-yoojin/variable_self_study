@@ -1,0 +1,27 @@
+cloudera 
+* certification
+    - The leader in Apache Hadoop-based certification
+    - Cloudera certification exams favor hands-on, performance-based problems 
+        that require execution of a set of real-world tasks against a live, working cluster
+    - Type
+        > CCA
+            CCA Spark and Hadoop Developer
+            CCA Data Analyst
+            CCA CDH Administrator and CCA HDP Administrator
+        > CCP
+            CCP Data Engineer
+    
+Introduction to Apache Hadoop and the Hadoop Ecosystem
+    - 3V
+        Volume, Velocity, Variety
+
+Data Processing
+    - Processing 
+        apache Spark, Hadoop MapReduce
+    - Resource Management
+        YARN
+    - Storage
+        HDFS, HBase, Kudu, Cloud
+
+- p.34
+
