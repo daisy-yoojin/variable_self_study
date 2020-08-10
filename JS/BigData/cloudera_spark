@@ -23,5 +23,51 @@ Data Processing
     - Storage
         HDFS, HBase, Kudu, Cloud
 
-- p.34
+Data Storage
+    - HDFS
+        main on-premises storage layer for Hadoop
+        Inexpensive reliable storage for massive amounts of data
+    - Apache HBase
+        A NoSQL distributed database built on HDFS
+    - Apache Kudu
+        key-value storage
+    - Cloud storage
+        most hadoop ecosystem tools support in the cloude
+        ex. Amazon S3, MS ADLS
 
+Hadoop MapReduce: The Original Hadoop Processing Engine
+    - the Original Hadoop framework for processing big data 
+        Primarily Java-based
+    - Still in use in many production systems
+
+<<Apache Hadoop File Storage>>
+* Hadoop Cluster Terminology
+    - cluster is a group of computers working together
+    - Master nodes manage distribution of work and data
+    - Worker nodes store and process data
+    - A daemon is a program running on a  node to provide a service
+
+* HDFS Architecture
+
+    1) Basic Concepts
+    - HDFS is the original Hadoop storage system
+    - Sits on top of a native file system
+    - Provides redundant storage for massive amounts of data
+    - HDFS performs best with a “modest” number of large files
+    - Files in HDFS are “write once”
+    - HDFS is optimized for large, streaming reads of files
+
+    2) File be sotred
+    - Data files are split into blocks (default 128MB) which are distributed at load time
+    - Actual blocks are stored on cluster worker nodes running the Hadoop HDFS Data Node service
+    - Each block is replicated on multiple DataNodes (default 3x)
+    - A cluster master node runs the HDFS Name Node service, which stores file metadata
+        Often referred to as the NameNode
+
+                       block1    Data Node A
+    large Data File -> block2 -> Data Node B  -> NameNode (Meta Info. about files and blocks)
+                       block3    Data Node C
+                       block4    Data Node D
+
+* Using HDFS
+    
