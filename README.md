@@ -13,3 +13,12 @@
 - Web crolling - simple examples (on megabox site)
   - Use Beautiful Soap
   - Use Selenium - dynamical values
+
+-----
+
+2020-08-10
+
+- About Hadoop
+  - Data Processing
+  - Storage
+  - MapReduce
