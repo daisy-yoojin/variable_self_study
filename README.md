@@ -22,3 +22,4 @@
   - Data Processing
   - Storage
   - MapReduce
+  - HDFS Architecture
