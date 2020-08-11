@@ -70,4 +70,54 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
                        block4    Data Node D
 
 * Using HDFS
+    - Command line interface
+        $hdfs dfs
     
+*Essential Points
+    - The Hadoop Distributed File System (HDFS) is the main storage layer for Hadoop
+    - HDFS chunks data into blocks and distributes them to the cluster when data is stored
+    - HDFS clusters consist of
+        ─ A single NameNode to manage file metadata
+        ─ Multiple DataNodes to store data
+    - The hdfs dfs command allows you to use and manage files in HDFS
+
+<<Distributed Processing on an Apache Hadoop Cluster>>
+
+* YARN Architecture
+    - What is YARN?
+        - YARN = Yet Another Resource Negotiator
+        - YARN is Hadoop processing layer (contains)
+            Resource manager
+            A job scheduler
+    - YARN Daemons
+        - Resource manager (RM)
+            runs on master node
+            global resource scheduler
+            
+        - Node manager (NM)
+            runs on worker nodes
+            communicates with RM
+            Manages node resources
+            Launches containers
+        
+        - containers
+            allocate a certain amount of resources(memory, CPU cores) on a worker node
+            Applications runs in one or more containers
+            Applications request containers from RM
+
+        - Application Master (AM)
+            One per Application
+            framework/application specific
+            runs in a container
+            request more containers to run application tasks
+
+        -  Each application consists of one or more containers
+            The ApplicationMaster runs in one container
+            The application’s distributed processes (JVMs) run in other containers
+            The processes run in parallel, and are managed by the AM
+            The processes are called executors in Apache Spark and tasks in Hadoop MapReduce
+        
+        - Applications are typically submitted to the cluster from an edge or gateway node
+
+
+
