@@ -119,5 +119,55 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
         
         - Applications are typically submitted to the cluster from an edge or gateway node
 
+* Essential Points
+    - YARN manages resources in a Hadoop cluster and schedules Applications
+    - Worker nodes run NodeManafer daemons, managed by a ResourceManager on a master node
+    - Applications running on YARN consist of an ApplicationMaster and one or more executors
+    - Use the YARN ResourceManager web UI or the yarn command to monitor Applications
+
+<<Apache Spark Basics>>
+
+* What is Apache Spark?
+    - a fast, general-purpose engine for large-scale data processing
+    - written in Scala
+        Functional programming language that runs in a JVM
+    - Spark Shell
+        Interactive—for learning, data exploration, or ad hoc analytics
+        Python and Scala
+    - Spark Applications
+        For large scale data processing
+        Python, Scala, and Java
+    
+    - The Spark Stack
+        ` Spark provides a stack of libraries built on core Spark
+            ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐
+            │  Spark  │ │   MLib  │ │  Spark  │ │  GraphX │ 
+            │   SQL   │ │         │ │Streaming│ │         │
+            └─────────┘ └─────────┘ └─────────┘ └─────────┘
+            ┌─────────────────────────────────────────────┐
+            │                 Core Spark                  │
+            └─────────────────────────────────────────────┘
+            Core Spark provides the fundamental Spark abstraction:
+                Resilient Distributed Datasets (RDDs)
+            Spark SQL works with structured data
+            MLlib supports scalable machine learning
+            Spark Streaming applications process data in real time
+            GraphX works with graphs and graph-parallel computation
+    
+    - Spark SQL
+        ` Spark SQL is a SPark library for working with structured data
+        ` Spark SQL provide
+            The DataFrame and Dataset API
+                The primary entry point for developing Spark applications
+                DataFrames adnd Datasets are abstractions for representing structured data
+            Datalyst Optimizer - an extensible optimization framework
+            A SQL engine and command line interface
+
+* The Spark shell
+    - The Spark shell provides an interactive Spark environment
+-p.102
+
+
+
 
 
