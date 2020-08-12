@@ -196,7 +196,46 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
         ex)
             pyspark --master yarn
             spark-shell --master yarn
-    
+
+    - Apache Zeppelin
+        is a web-based notebook approach to interactive data analytics.
+        Provides collaborative environment with Python, Scala, SQL, and more.
+
+* Using Spark Shell
+    - Working with the Spark Session
+        provides functions and attributes to access all of Spark functionally
+        ─ sql: execute a Spark SQL query
+        ─ catalog: entry point for the Catalog API for managing tables
+        ─ read: function to read data from a file or other data source
+        ─ conf: object to manage Spark configuration settings
+        ─ sparkContext: entry point for core Spark API
+
+* Datasets and DataFrames
+    - DataFrames contain a collection of Row objects
+    - Creating DataFrame
+        ` use spark.read
+            ex) 
+            # returns the Spark session's DataFrameReader
+            # Call json dunction to create a new DataFrame
+            usersDF = spark.read.json("users.json")
+
+            # DataFrame always have an associated schema
+            # DataFrameReader can infer the schema from the data
+            # Use printSchema to show the DataFrame's schema
+
+            # root
+            # |-- age: long (nullable = true)
+            # |-- name: string (nullable = true)
+            # |-- pcode: string (nullable = true)
+            usersDF.printSchema()
+-p.120
+
+           
+        
+
+
+
+
     
 
 
