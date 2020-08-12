@@ -165,7 +165,46 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
 
 * The Spark shell
     - The Spark shell provides an interactive Spark environment
--p.102
+    - typically run the Spark shell on a gateway node
+    - on Cloudera cluster, the command to start Spark shell
+        ` pyspark 
+        ` spark-shell
+    - start-up options
+        ` master : specify the cluster to connect to
+        ` jars : Additional JAR files
+        ` py-files : Additional Python files (Python only)
+        ` name : the name the Spark Application UI uses for this application
+            Defaults to PySpark Shell or Spark shell
+        ` help: Show all the available shell options
+        ex) pyspark --name "My Application"
+
+    - Spark Cluster options
+        ` Spark applications can run on these types of clusters
+            ─ Apache Hadoop YARN
+            ─ Kubernetes
+            ─ Apache Mesos
+            ─ Spark Standalone
+        ` They can also run locally instead of on a cluster
+        ` CDH, HDP, and CDP Data Center use YARN
+        ` CDP Private Cloud and CDP Public Cloud use Kubernetes
+        ` Specify the type or URL of the cluster using the master option
+        ` Set the master option to specify cluster type
+            ─ yarn
+            ─ local[*] runs locally with as many threads as cores (default)
+            ─ local[n] runs locally with n threads
+            ─ local runs locally with a single thread
+        ex)
+            pyspark --master yarn
+            spark-shell --master yarn
+    
+    
+
+
+
+
+    
+
+
 
 
 
