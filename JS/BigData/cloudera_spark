@@ -230,18 +230,139 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
             usersDF.printSchema()
 
             # show
-            +----+-------+-----+
-            | age|   name|pcode|
-            +----+-------+-----+
-            |null|  Alice|94304|
-            |  30|Brayden|94304|
-            |  19|  Carla|10036|
-            |  46|  Diana| null|
-            |null|Etienne|94104|
-            +----+-------+-----+
+            # +----+-------+-----+
+            # | age|   name|pcode|
+            # +----+-------+-----+
+            # |null|  Alice|94304|
+            # |  30|Brayden|94304|
+            # |  19|  Carla|10036|
+            # |  46|  Diana| null|
+            # |null|Etienne|94104|
+            # +----+-------+-----+
             usersDF.show()
-            
+
 * DataFrame Operations
+    - Two main types of DataFrame Operations
+        ` Transformations create a new DataFrame based on existing one 
+            Transformations are executed in parallel by the application's executors
+        ` Actions output data values from the DataFrame
+            Output is typically returned from the executors to the main Spark program (called the driver) or saved to a file
+    - Some common DataFrame actions include
+        ─ count: returns the number of rows
+        ─ first: returns the first row (synonym for head())
+        ─ take(n): returns the first n rows as an array (synonym for head(n))
+        ─ show(n): display the first n rows in tabular form (default is 20 rows)
+        ─ collect: returns all the rows in the DataFrame as an array
+        ─ write: save the data to a file or other data source
+
+            # Python ver.
+            usersDF = spark.read.json("users.json")
+            users = usersDF.take(3)
+            
+            ### result
+            [Row(age=None, name=u'Alice', pcode=u'94304'),
+            Row(age=30, name=u'Brayden', pcode=u'94304'),
+            Row(age=19, name=u'Carla', pcode=u'10036')]
+
+            # Scala ver.
+            val usersDF = spark.read.json("users.json")
+            val users = usersDF.take(3)
+           
+            ### result
+            usersDF: Array[org.apache.spark.sql.Row] =
+            Array([null,Alice,94304],
+            [30,Brayden,94304],
+            [19,Carla,10036])
+
+    - DataFrame Operations: Transformations ★★★★★
+        ` Transformations create a new DataFrame based on an existing one
+            ─ The new DataFrame may have the same schema or a different one
+        ` Transformations do not return any values or data to the driver
+            ─ Data remains distributed across the application’s executors
+        ` DataFrames are immutable
+            ─ Data in a DataFrame is never modified
+            ─ Use transformations to create a new DataFrame with the data you need  
+        ` Common transformations include
+            ─ select: only the specified columns are included
+            ─ where: only rows where the specified expression is true are included (synonym for filter)
+            ─ orderBy: rows are sorted by the specified column(s) (synonym for sort)
+            ─ join: joins two DataFrames on the specified column(s)
+            ─ limit(n): creates a new DataFrame with only the first n rows
+
+            # Python
+            nameAgeDF = usersDF.select("name","age")
+            nameAgeDF.show()
+            # result
+            +-------+----+
+            |   name| age|
+            +-------+----+
+            |  Alice|null|
+            |Brayden|  30|
+            |  Carla|  19|
+            |  Diana|  46|
+            |Etienne|null|
+            +-------+----+
+            over20DF = usersDF.where("age > 20")
+            over20DF.show()
+            +---+-------+-----+
+            |age|   name|pcode|
+            +---+-------+-----+
+            | 30|Brayden|94304|
+            | 46|  Diana| null|
+            +---+-------+-----+
+
+        ` A sequence of transformations followed by an action is a query
+            nameAgeDF = usersDF.select("name","age")
+            nameAgeOver20DF = nameAgeDF.where("age > 20")
+            nameAgeOver20DF.show()
+            +---+-------+
+            |age|   name|
+            +---+-------+
+            | 30|Brayden|
+            | 46|  Diana|
+            +---+-------+
+    
+    *** Chaining Transformations
+        ` Transformations in a query can be chained together
+        `  These two examples perform the same query in the same way
+            ─ Differences are only syntactic
+
+            # Python ver.
+            # 1 
+            nameAgeDF = usersDF.select("name","age")
+            nameAgeOver20DF = nameAgeDF.where("age > 20")
+            nameAgeOver20DF.show()
+            # 2
+            usersDF.select("name","age").where("age > 20").show()
+
+            # Scala ver.
+            #1
+            val nameAgeDF = usersDF.select("name","age")
+            val nameAgeOver20DF = nameAgeDF.where("age > 20")
+            nameAgeOver20DF.show            
+            #2
+            usersDF.select("name","age").where("age > 20").show
+
+* Essential Points
+    - Apache Spark is a framework for analyzing and processing big data
+    - The Python and Scala Spark shells are command line REPLs for executing Spark interactively
+        ─ Spark applications run in batch mode outside the shell
+    - DataFrames represent structured data in tabular form by applying a schema
+    - Types of DataFrame operations
+        ─ Transformations create new DataFrames by transforming data in existing ones
+        ─ Actions collect values in a DataFrame and either save them or return them to the Spark driver
+    - A query consists of a sequence of transformations followed by an action
+
+-p.137
+<< Working with DataFrames and Schema >>
+
+
+
+
+
+
+
+
 
 
            
