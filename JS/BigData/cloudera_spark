@@ -228,7 +228,21 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
             # |-- name: string (nullable = true)
             # |-- pcode: string (nullable = true)
             usersDF.printSchema()
--p.120
+
+            # show
+            +----+-------+-----+
+            | age|   name|pcode|
+            +----+-------+-----+
+            |null|  Alice|94304|
+            |  30|Brayden|94304|
+            |  19|  Carla|10036|
+            |  46|  Diana| null|
+            |null|Etienne|94104|
+            +----+-------+-----+
+            usersDF.show()
+            
+* DataFrame Operations
+
 
            
         
