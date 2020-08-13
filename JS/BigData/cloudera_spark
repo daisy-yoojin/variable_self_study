@@ -353,10 +353,8 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
         ─ Actions collect values in a DataFrame and either save them or return them to the Spark driver
     - A query consists of a sequence of transformations followed by an action
 
--p.137
 << Working with DataFrames and Schema >>
-
-
+-p.139
 
 
 
