@@ -354,8 +354,34 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
     - A query consists of a sequence of transformations followed by an action
 
 << Working with DataFrames and Schema >>
--p.139
-
+*  Creating DataFrames from Data Source
+    - DataFrame Data Sources
+        ` DataFrames read data from and write data to data sources
+        ` Spark SQL supports a wide range of data source types and formats
+            ─ Text files
+                ─ CSV, JSON, plain text
+            ─ Binary format files
+                ─ Apache Parquet, Apache ORC, Apache Avro data format
+            ─ Tables
+                ─ Hive metastore, JDBC
+            ─ Cloud
+                ─ Such as Amazon S3 and Microsoft ADLS
+        ` can use custom or third-party data source types
+    - DataFrames and Apache Parquet Files
+        ` Parquet is a very common file format for DataFrame data
+        ` Features of Parquet
+            ─ Optimized binary storage of structured data
+            ─ Schema metadata is embedded in the file
+            ─ Efficient performance and size for large amounts of data
+            ─ Supported by many Hadoop ecosystem tools
+                ─ Spark, Hadoop MapReduce, Hive, and others
+        ` Use parquet-tools to view Parquet file schema and data
+            ─ Use head to display the first few records
+                $ parquet-tools head mydatafile.parquet
+            ─ Use schema to view the schema
+                $ parquet-tools schema mydatafile.parquet
+    - Creating a DataFrame from a Data Source
+-p.142
 
 
 
