@@ -297,3 +297,23 @@
     - Mutable Map
         val hashMap = mutable.Map("one" -> 1, "two" -> 2)  
         hashMap ++= Map("five" -> 5, "six" -> 6)    // ④ Map(one -> 1, six -> 6, five -> 5, two -> 2)
+
+* Immutable Collection
+    - var로 선언된 경우 Collection의 += , -+연산자 사용 가능.
+        변경사항을 새로 반영하여 var선언 변수에 저장한다.
+
+        // ① 변경할 수 없는 Collection이 var로 선언된 경우
+        var immutableSet = Set(1, 2, 3)   
+        immutableSet += 4  
+        // 위의 코드는 새로운 Set을 만들어서 immutableSet에 저장하는 아래 코드와 같음
+        immutableSet = immutableSet + 4  
+
+        // ② 변경할 수 있는 Collection이라면 추가하는 Method를 호출하는것과 같음
+        val mutableSet = mutable.Set(1, 2, 3)    
+        mutableSet += 4        
+        // 위의 코드는 mutableSet 자체의 메소드(+=이라는 메소드)를 호출하는 아래 코드와 같음
+        mutableSet.+=(4)  
+
+* class
+    - 클래스를 선언하는 부분이 기본 생성장의 역할도함.
+    
