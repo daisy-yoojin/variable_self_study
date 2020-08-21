@@ -1,5 +1,5 @@
   Quick_doc
-* Scalar
+* Scala
     상수, 값을 다 object로 취급한다.
     매개변수가 하나 일 때, 괄호와 .을 생략 할 수 있다.
 
@@ -376,7 +376,7 @@
 
 * setter and getter
     - 변수(val, var)와 메소드(def)는 같은 이름을 사용할 수 없다.
-        //java  -> scalar 불가
+        //java  -> scala 불가
         int name; int name(){ return 0;}
         
         //JPerson.scala
