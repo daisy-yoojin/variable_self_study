@@ -336,6 +336,8 @@
          * var로 선언된 lname은 getter와 setter가 자동으로 생성 */
         class Person4(val fname:String, var lname:String)
 
+        // main file
+
     - 스칼라에서는 명시적으로 정의되지 않으면 모두 public으로 간주
     - getter와 setter를 사용하기 위해서는 private 변수의 이름은 다르게 지정
         메소드명과 구분하기 위해 _를 변수명 앞에 붙이기도 함
