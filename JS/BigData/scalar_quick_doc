@@ -315,5 +315,27 @@
         mutableSet.+=(4)  
 
 * class
-    - 클래스를 선언하는 부분이 기본 생성장의 역할도함.
-    
+    - 클래스를 선언하는 부분이 기본 생성장의 역할도 함
+
+    - 선언 방법
+        // ① 단순한 클래스
+        class Person1(fname:String, lname:String)
+        // ② 메소드를 가지는 클래스
+        //   메소드를 정의하는 방법
+        class Person2(fname:String, lname:String){  
+            def greet = s"${lname}${fname}님 안녕하세요!" // public한 method
+        }
+        // ③ public한 val(read only) 필드   
+        //   필드를 선언하는 방법
+        class Person3(fname:String, lname:String){  
+            val fullName = s"${lname}${fname}" // public한 val(read only) 필드
+            def greet = s"${fullName}님 안녕하세요!" // public한 method
+        }
+        /* ④ val로 선언하면 해당 이름을 가지는 변수(private)와 public getter메소드를 생성
+         * val로 선언된 fname는 getter가 자동으로 생성되고
+         * var로 선언된 lname은 getter와 setter가 자동으로 생성 */
+        class Person4(val fname:String, var lname:String)
+
+    - 스칼라에서는 명시적으로 정의되지 않으면 모두 public으로 간주
+    - getter와 setter를 사용하기 위해서는 private 변수의 이름은 다르게 지정
+        메소드명과 구분하기 위해 _를 변수명 앞에 붙이기도 함
