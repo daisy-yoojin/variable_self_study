@@ -364,7 +364,7 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
                 ─ Apache Parquet, Apache ORC, Apache Avro data format
             ─ Tables
                 ─ Hive metastore, JDBC
-            ─ Cloud
+            ─ CloudW
                 ─ Such as Amazon S3 and Microsoft ADLS
         ` can use custom or third-party data source types
     - DataFrames and Apache Parquet Files
@@ -380,8 +380,45 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
                 $ parquet-tools head mydatafile.parquet
             ─ Use schema to view the schema
                 $ parquet-tools schema mydatafile.parquet
-    - Creating a DataFrame from a Data Source
--p.142
+    - spark.read return DataFrameReader object
+    - use DataFrameReader settings to specify how to load data from the data source
+        ` format inducates the data source type, such as csv, json, or parquet (default is parquet)
+        ` option specifies a key/value setting for the underlying data source
+        ` schema specifies a schema to use instead of inferring one from the data source
+    - Create the DataFrame based on the data source
+        ` load loads data from a file or files
+    - example  
+        # read file
+        myDF = spark.read.format("csv").option("header","true").load("/loudacre/myFile.csv")
+        # == spark.read.csv("/loudacre/myFile.csv")
+        # reading dynamical type
+        spark.read.json("myfile.json")
+        spark.read.json("mydata/)
+        spark.read.json("mydata/*.json")
+        spark.read.json("myfile1.json","myfile2.json")
+    - files and directories are referred by absolute or relative URL
+        ` relative URL
+        ` absolute URL
+    - Apache Hive provides database-like access to data in HDFS
+        ` Applies schemas to HDFS files
+        ` Metadata is stored in the Hive metastore
+    - Spark can read from and write to Hive tables
+        ` Infers the DataFrame schema from the Hive metadata
+    - Spark Hive support must be enabled and configured with location od the Hive warehouse in HDFS
+        usersDF = spark.read.table("users")
+    - create DataFrames from a collection of in-memory data
+        val mydata = List(("Josiah","Bartlet"),("Harry","Potter"))
+        val myDF = spark.createDataFrame(mydata)
+        myDF.show()
+        # result
+        +------+-------+
+        |    _1|     _2|
+        +------+-------+
+        |Josiah|Bartlet|
+        | Harry| Potter|
+        +------+-------+
+
+
 
 
 
