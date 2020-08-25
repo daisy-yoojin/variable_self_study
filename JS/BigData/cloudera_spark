@@ -502,7 +502,7 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
             |-- firstName: string (nullable = true)
             |-- age: integer (nullable = true)
 
-
+p.157
 
 
 
