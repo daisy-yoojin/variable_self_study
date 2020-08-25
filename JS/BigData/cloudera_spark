@@ -417,9 +417,90 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
         |Josiah|Bartlet|
         | Harry| Potter|
         +------+-------+
-* Saving DataFrame to Data Source
-P.149
 
+* Saving DataFrame to Data Source
+    - Key DataFrameWrite functions
+        ` Saves data to a data source such as a table or set of files
+        ` Works similarly to DataFrameReader
+    - DataFrameWrite methods
+        ` format specifies a data source type
+        ` mode determines the behavior if the directory or table already exists
+            ─ error, overwrite, append, or ignore (default is error)
+        ` partitionBy stores data in partitioned directories in the form column=value (as with Hive partitioning)
+        ` option specifies properties for the target data source
+        ` save saves the data as files in the specified directory
+            ─ Or use json, csv, parquet, and so on
+        ` saveAsTable saves the data to a Hive metastore table
+            ─ Data location based on Hive warehouse default
+            ─ Set path option to override location
+    - example
+        myDF.write.mode("append").option("path", "/louadacre/mydata").saveAsTable("my_table")
+        # write data as aparquet files in mydata directory
+        myDF.write.save("mydata")
+        # save data from DataFrame, must specify a directory
+            ─ Spark saves the data to one or more part- files in the directory
+            devDF.write.csv("devices")
+        
+            $ hdfs dfs -ls
+
+            devices
+            Found 4 items
+            -rw-r--r-- 3 training training 0 … devices/_SUCCESS
+            -rw-r--r-- 3 training training 2119 … devices/part-00000-e0fa6381-….csv
+            -rw-r--r-- 3 training training 2202 … devices/part-00001-e0fa6381-….csv
+            -rw-r--r-- 3 training training 2333 … devices/part-00002-e0fa6381-….csv
+
+* DataFrame Schemas
+    - Every DataFrame has an associated schema
+        ─ Defines the names and types of columns
+        ─ Immutable and defined when the DataFrame is created
+
+        myDF.printSchema()
+        root
+        |-- lastName: string (nullable = true)
+        |-- firstName: string (nullable = true)
+        |-- age: integer (nullable = true)
+    - When creating a new DataFrame from a data source, the schema can be
+        ─ Automatically inferred from the data source
+        ─ Specified programmatically    
+    - When a DataFrame is created by a transformation, Spark calculates the new schema based on the query
+    - Inferrd Schemas
+        ` Spark can load schemas from structured data, such as
+            ─ Parquet, ORC, and Avro data files—schema is embedded in the file
+            ─ Hive tables—schema is defined in the Hive metastore
+            ─ Parent DataFrames
+        ` Spark can also attempt to infer a schema from semi-structured data sources
+            ─ For example, JSON and CSV
+        ` Example
+            # 02134,Hopper,Grace,52
+            # 94020,Turing,Alan,32
+            # 94020,Lovelace,Ada,28
+            # 87501,Babbage,Charles,49
+            # 02134,Wirth,Niklaus,48
+            # Inferring the Schema of a CSV File (No Header)
+            spark.read.option("inferSchema","true").csv("people.csv").printSchema()
+
+            root
+            |-- _c0: integer (nullable = true)
+            |-- _c1: string (nullable = true)
+            |-- _c2: string (nullable = true)
+            |-- _c3: integer (nullable = true)
+
+            # pcode,lastName,firstName,age
+            # 02134,Hopper,Grace,52
+            # 94020,Turing,Alan,32
+            # 94020,Lovelace,Ada,28
+            # 87501,Babbage,Charles,49
+            # 02134,Wirth,Niklaus,48
+            # Inferring the Schema of a CSV File (with Header)
+
+            spark.read.option("inferSchema","true").option("header","true").csv("people.csv").printSchema()
+
+            root
+            |-- pcode: integer (nullable = true)
+            |-- lastName: string (nullable = true)
+            |-- firstName: string (nullable = true)
+            |-- age: integer (nullable = true)
 
 
 
