@@ -502,8 +502,20 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
             |-- firstName: string (nullable = true)
             |-- age: integer (nullable = true)
 
-p.157
+    - Inferred Schemas versus Manual Schemas
+        ` Drawbacks to relying on Spark’s automatic schema inference
+            ─ Inference requires an initial file scan, which may take a long time
+            ─ The schema may not be correct for your use case
+        ` You can define the schema manually instead
+            ─ A schema is a StructType object containing a list of StructField objects
+            ─ Each StructField represents a column in the schema, specifying
+                ─ Column name
+                ─ Column data type
+                ─ Whether the data can be null (optional—the default is true)
+        ` Example
 
+
+p.158
 
 
 
