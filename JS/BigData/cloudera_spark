@@ -512,10 +512,36 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
                 ─ Column name
                 ─ Column data type
                 ─ Whether the data can be null (optional—the default is true)
-        ` Example
 
+    - Defining Schema Programmatically
+        # Python
+        from pyspark.sql.types import *
+        columnsList = [
+        StructField("pcode", StringType()),
+        StructField("lastName", StringType()),
+        StructField("firstName", StringType()),
+        StructField("age", IntegerType())]
+        peopleSchema = StructType(columnsList)
 
-p.158
+        # Scala
+        import org.apache.spark.sql.types._
+        val columnsList = List(
+        StructField("pcode", StringType),
+        StructField("lastName", StringType),
+        StructField("firstName", StringType),
+        StructField("age", IntegerType))
+        val peopleSchema = StructType(columnsList)
+
+    - Applying a Schema manually
+        spark.read.option("header","true").schema(peopleSchema).csv("people.csv").printSchema()
+
+        root
+        |-- pcode: string (nullable = true)
+        |-- lastName: string (nullable = true)
+        |-- firstName: string (nullable = true)
+        |-- age: integer (nullable = true)
+
+* Eager and Lazy Execution
 
 
 
