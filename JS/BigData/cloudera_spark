@@ -542,6 +542,16 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
         |-- age: integer (nullable = true)
 
 * Eager and Lazy Execution
+    ▪ Operations are eager when they are executed as soon as the statement is reached in the code
+    ▪ Operations are lazy when the execution occurs only when the result is referenced
+    ▪ Spark queries execute both lazily and eagerly
+        ─ DataFrame schemas are determined eagerly
+        ─ Data transformations are executed lazily
+    ▪ Lazy execution is triggered when an action is called on a series of transformations
+
+    - Example( p.164 )
+        usersDF  = spark.read.json("users.json")
+
 
 
 
