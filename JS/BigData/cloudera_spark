@@ -553,7 +553,13 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
         usersDF  = spark.read.json("users.json")
         nameAgeDF = usersDF.select("name","age")
         nameAgeDF.show()
-        
+        +-------+----+
+        |   name| age|
+        +-------+----+
+        |  Alice|null|
+        |Brayden|  30|
+        |  Carla|  19|
+        …
 
 
 
