@@ -551,6 +551,10 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
 
     - Example( p.164 )
         usersDF  = spark.read.json("users.json")
+        nameAgeDF = usersDF.select("name","age")
+        nameAgeDF.show()
+        
+
 
 
 
