@@ -569,6 +569,35 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
     ▪ DataFrames can infer a schema from a data source, or you can define one manually
     ▪ DataFrame schemas are determined eagerly (at creation) but queries are executed lazily (when an action is called)
 
+<<Analyzing Data with DataFrame Queries>>
+
+* Querying DataFrames Using Column Expressions
+    - Columns, Column Names, and Column Expressions
+        ` Most DataFrame transformations require you to specify a column or columns
+            ─ select(column1, column2, …)
+            ─ orderBy(column1, column2, …)
+        ` For many simple queries, you can just specify the column name as a string
+            ─ peopleDF.select("firstName","lastName")
+        ` Some types of transformations use column references or column expressiosn instead of column name strings
+    
+    - Example (Code)
+        peopleDF = spark.read.option("header","true").csv("people.csv")
+
+        peopleDF['age']
+        # Column<age>
+        
+        peopleDF.age
+        # Column<age>
+        
+        peopleDF.select(peopleDF.age).show()
+        +---+
+        |age|
+        +---+
+        | 52|
+        | 32|
+        | 28|
+        …
+p.178
 
 
 
