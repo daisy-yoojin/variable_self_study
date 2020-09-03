@@ -561,7 +561,13 @@ Hadoop MapReduce: The Original Hadoop Processing Engine
         |  Carla|  19|
         …
 
-
+* Essential Points
+    ▪ DataFrames can be loaded from and saved to several different types of data sources
+        ─ Semi-structured text files like CSV and JSON
+        ─ Structured binary formats like Parquet, Avro, and ORC
+        ─ Hive and JDBC tables
+    ▪ DataFrames can infer a schema from a data source, or you can define one manually
+    ▪ DataFrame schemas are determined eagerly (at creation) but queries are executed lazily (when an action is called)
 
 
 
