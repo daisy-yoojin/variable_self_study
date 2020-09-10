@@ -24,3 +24,31 @@ https://yoo-hyeok.tistory.com/100
 
 https://victorydntmd.tistory.com/135
  ChatWindow  Class - code 다시 볼것
+
+
+ -----https://hanee24.github.io/2018/08/04/sso/
+
+SSO 미 사용시,
+서로 다른 서비스는 각자의 방식으로 로그인을 요구한다.
+A , B , C -> A방식, B방식, ㅊ방식으로 로그인을 해야한다 - 기존사항
+
+SSO 사용시,
+ 로그인 한 번으로 서비스를 이용할 수 있음. 
+ 각 어플리케이션에서 로그인/인증 부분만 떼어서 한군데로 모아두는 방식이다.
+
+<---
+sso는 어떻게 동작하는가
+
+
+
+
+
+
+
+
+
+
+
+
+
+
