@@ -38,24 +38,24 @@ export class TimeDisplayComponent implements OnInit {
 
   }
 
-  ngOnChanges(changes: SimpleChanges){
-    console.log(changes);
-    for(let propName in changes){
-      if(propName == 'inputData'){
-        switch (changes[propName].currentValue) {
-          case 'start':
-            this.timeStart();
-            break;
-          case 'stop':
-            this.timeStop();
-            break;
-          case 'reset':
-            this.timeReset();
-            break;
-        }// end of switch
-      }// end of if
-    }// end of for
-  }
+  // ngOnChanges(changes: SimpleChanges){
+  //   console.log(changes);
+  //   for(let propName in changes){
+  //     if(propName == 'inputData'){
+  //       switch (changes[propName].currentValue) {
+  //         case 'start':
+  //           this.timeStart();
+  //           break;
+  //         case 'stop':
+  //           this.timeStop();
+  //           break;
+  //         case 'reset':
+  //           this.timeReset();
+  //           break;
+  //       }// end of switch
+  //     }// end of if
+  //   }// end of for
+  // }
 
   ngOnInit(): void {
 

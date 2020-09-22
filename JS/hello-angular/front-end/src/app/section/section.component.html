@@ -1,6 +1,18 @@
 <div class ="section">
     <div class='display'>
+
+
         <app-time-display [inputData]="present"></app-time-display>
+        
         <app-buttons (clickEvent)="startTime($event)"> </app-buttons>
+        <!-- <app-time-display></app-time-display>
+        <app-time-display></app-time-display>
+        <app-time-display></app-time-display>
+        <app-time-display></app-time-display>
+        -->
+        {{commandTest}}
+        <app-buttons (clickEvent)="commandTest = $event"> </app-buttons>
+    
+    
     </div>
 </div>
