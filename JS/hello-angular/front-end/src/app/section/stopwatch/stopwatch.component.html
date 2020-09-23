@@ -1,4 +1,4 @@
-<!-- <div class ="section">
+<div class ="title">
     <div class='display'>
 
 
@@ -10,14 +10,16 @@
         <app-time-display></app-time-display>
         <app-time-display></app-time-display>
         -->
-<!--        <hr>
+        <hr>
         {{commandTest}}
         <app-buttons (clickEvent)="commandTest = $event"> </app-buttons>
     
     
     </div>
-</div> -->
-<router-outlet></router-outlet>
 
-<!-- path=> stopwatch-->
-<!-- <app-stopwatch></app-stopwatch> -->
+    <!-- /가 없으면 기존 링크 뒤에 작성한 string값이 붙어 들어간다. 지금은 해당 주소에 대한 작업이 없으므로 작업 x -->
+    <a [routerLink]="'/clock'">시계로 이동</a>
+    
+
+
+</div>
