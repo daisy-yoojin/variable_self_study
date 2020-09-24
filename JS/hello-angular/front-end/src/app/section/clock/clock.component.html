@@ -1,1 +1,10 @@
-<p>clock works!</p>
+<div class='time-string'>
+    {{timeString}}
+    <br>
+    <!-- method호출은 추천방법이 아니다. -->
+    <!-- {{getCurrentTime()}} -->
+
+</div>
+<button (click)="goStopWatch()">
+    스탑워치로 이동
+</button>

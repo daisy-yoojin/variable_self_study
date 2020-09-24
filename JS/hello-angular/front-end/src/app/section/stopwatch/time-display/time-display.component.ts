@@ -24,6 +24,8 @@ export class TimeDisplayComponent implements OnInit {
   }
 
   timeStart(){
+    // start 2번 이상눌리면 setInterval의 객체가 stop시 1개만 clear되므로 객체를 1개만 생성하기위해 Stop을 걸어둔다
+    this.timeStop(); 
     this.timeInterval = setInterval(()=>{
       this.ms++;
     },10);
