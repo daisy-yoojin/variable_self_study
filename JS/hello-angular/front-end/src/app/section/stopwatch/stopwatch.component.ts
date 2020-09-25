@@ -4,7 +4,11 @@ import { PageToggleService } from 'src/app/share/page-toggle.service';
 @Component({
   selector: 'app-stopwatch',
   templateUrl: './stopwatch.component.html',
-  styleUrls: ['./stopwatch.component.scss']
+  styleUrls: ['./stopwatch.component.scss'],
+  //module에서 설정 혹은 component에서 설정가능하다. - singleton으로 
+  providers:[
+    PageToggleService
+  ],
 })
 export class StopwatchComponent implements OnInit {
 
@@ -14,7 +18,7 @@ export class StopwatchComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private pageToggleService:  PageToggleService
+    public pageToggleService:  PageToggleService
     ) { 
     
   }

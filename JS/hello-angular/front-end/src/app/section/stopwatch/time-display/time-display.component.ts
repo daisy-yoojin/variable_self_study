@@ -1,9 +1,11 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { PageToggleService } from 'src/app/share/page-toggle.service';
 
 @Component({
   selector: 'app-time-display',
   templateUrl: './time-display.component.html',
-  styleUrls: ['./time-display.component.scss']
+  styleUrls: ['./time-display.component.scss'],
+  
 })
 export class TimeDisplayComponent implements OnInit {
   @Input() inputData: string
@@ -15,8 +17,11 @@ export class TimeDisplayComponent implements OnInit {
 
   timeInterval;
 
-  constructor() { 
+  constructor(
+    private pageToggleService: PageToggleService
+  ) { 
     console.log(this.inputData);
+    
     // setInterval(()=>{
     //   this.text++;
 
@@ -24,6 +29,8 @@ export class TimeDisplayComponent implements OnInit {
   }
 
   timeStart(){
+
+    this.pageToggleService.plusCount();
     // start 2번 이상눌리면 setInterval의 객체가 stop시 1개만 clear되므로 객체를 1개만 생성하기위해 Stop을 걸어둔다
     this.timeStop(); 
     this.timeInterval = setInterval(()=>{

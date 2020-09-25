@@ -11,6 +11,9 @@ export class PageToggleService {
     private router: Router
 
   ) { }
+  plusCount(){
+    this.routingCount++;
+  }
 
   goPage(target){
     this.routingCount++;
