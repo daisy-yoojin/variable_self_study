@@ -18,7 +18,10 @@ import { SectionModule } from './section/section.module';
     SectionModule
 
   ],
-  providers: [],
+  providers: [
+    
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

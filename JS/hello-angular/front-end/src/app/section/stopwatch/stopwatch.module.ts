@@ -20,8 +20,8 @@ import { PageToggleService } from 'src/app/share/page-toggle.service';
     CommonModule,
     RouterModule
   ],
-  providers:[ // njectable한 객체들이 들어온다.
-    PageToggleService
+  providers:[ // injectable한 객체들이 들어올수 있다.
+    // PageToggleService
 
   ]
 })

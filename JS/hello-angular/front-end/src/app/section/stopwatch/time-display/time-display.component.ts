@@ -5,6 +5,10 @@ import { PageToggleService } from 'src/app/share/page-toggle.service';
   selector: 'app-time-display',
   templateUrl: './time-display.component.html',
   styleUrls: ['./time-display.component.scss'],
+  //주석처리하면 stopwatch의 서비스를 바라보기때문에 숫자의 증가가 동시에 이루어진다.
+  providers:[
+    // PageToggleService // stopwatchd와 서로 다른 객체를 가르킨다. 내용만 같음.
+  ],
   
 })
 export class TimeDisplayComponent implements OnInit {
@@ -18,7 +22,7 @@ export class TimeDisplayComponent implements OnInit {
   timeInterval;
 
   constructor(
-    private pageToggleService: PageToggleService
+    public pageToggleService: PageToggleService
   ) { 
     console.log(this.inputData);
     

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { StopwatchComponent } from '../section/stopwatch/stopwatch.component';
 
 @Injectable({
   providedIn: 'root'
+  // providedIn: StopwatchComponent
 })
 export class PageToggleService {
   public routingCount = 0;
