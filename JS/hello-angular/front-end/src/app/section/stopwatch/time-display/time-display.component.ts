@@ -34,10 +34,19 @@ export class TimeDisplayComponent implements OnInit {
 
   timeStart(){
 
-    this.pageToggleService.plusCount();
+    // this.pageToggleService.plusCount();
     // start 2번 이상눌리면 setInterval의 객체가 stop시 1개만 clear되므로 객체를 1개만 생성하기위해 Stop을 걸어둔다
     this.timeStop(); 
     this.timeInterval = setInterval(()=>{
+      if(this.ms>=100){
+        this.ms = 0 ;
+        this.sec++;
+      }
+
+      if(this.sec >=60){
+        this.sec = 0;
+        this.min++;
+      }
       this.ms++;
     },10);
     
@@ -48,7 +57,9 @@ export class TimeDisplayComponent implements OnInit {
   timeReset(){
     this.timeStop();
     this.ms = 0;
-
+    this.sec=0;
+    this.min=0;
+    
   }
 
   // ngOnChanges(changes: SimpleChanges){

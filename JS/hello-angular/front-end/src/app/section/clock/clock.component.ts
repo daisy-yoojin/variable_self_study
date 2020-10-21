@@ -16,9 +16,14 @@ export class ClockComponent implements OnInit {
     private router: Router
 
   ) { 
+
     setInterval(()=>{
 
-    },1000)
+
+    },1000);
+    // setInterval(()=>{
+
+    // },1000)
     // interval(1000).pipe(map(()=>{
     //   return moment().format('YYY-MM-DD MM:mm:ss');
     // }))
