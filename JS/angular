@@ -15,6 +15,19 @@ What is Angular vs AgularJS?
                 the scope created on the HTML element that contains the ng-app directive
 
                 
+++++
+- About lifecycle og Angular 
+ngOnchanges
+ngOnInit
+ngDoCheck
+
+ngAfterContennInit
+ngAfterContentChecked
+ngAfterViewInit
+ngAfterViewChecked
+
+ngDestroy
+
 
 ++++++++++++++++++++++
 need to check TypeScript
