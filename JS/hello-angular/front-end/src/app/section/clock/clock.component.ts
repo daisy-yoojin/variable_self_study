@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { interval } from 'rxjs';
 
+
 @Component({
   selector: 'app-clock',
   templateUrl: './clock.component.html',
@@ -17,14 +18,11 @@ export class ClockComponent implements OnInit {
 
   ) { 
 
-    setInterval(()=>{
+    this.timeString = setInterval(()=>{},1000);
+    console.log(this.timeString);
 
-
-    },1000);
-    // setInterval(()=>{
-
-    // },1000)
-    // interval(1000).pipe(map(()=>{
+    // interval(1000)
+    // .pipe(map(()=>{
     //   return moment().format('YYY-MM-DD MM:mm:ss');
     // }))
     // .subscribe(data=>{

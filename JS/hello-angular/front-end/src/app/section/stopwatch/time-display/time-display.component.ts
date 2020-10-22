@@ -57,8 +57,8 @@ export class TimeDisplayComponent implements OnInit {
   timeReset(){
     this.timeStop();
     this.ms = 0;
-    this.sec=0;
-    this.min=0;
+    this.sec = 0;
+    this.min = 0;
     
   }
 
