@@ -21,7 +21,7 @@ ngOnchanges
 ngOnInit
 ngDoCheck
 
-ngAfterContennInit
+ngAfterContentInit
 ngAfterContentChecked
 ngAfterViewInit
 ngAfterViewChecked
