@@ -80,9 +80,39 @@ export class TimeDisplayComponent implements OnInit {
   //     }// end of if
   //   }// end of for
   // }
-
+  ngOnchanges(changes: SimpleChanges): void{
+    console.log("ng on Changes");
+    for (let propName in changes){
+      console.log(changes);
+      console.log(propName);
+    }
+  }
   ngOnInit(): void {
+    console.log("ng on init");
 
+  }
+  ngDoCheck(): void{
+    console.log("ng do Check");
+  }
+
+  ngAfterContentInit(): void{
+    console.log("++++++++++++++++++++++++++++")
+    console.log("ng  After Content Init");
+  }
+
+  ngAfterContentChecked(): void{
+    console.log("ng After Content Checked");
+  }
+  ngAfterViewInit(): void{
+    console.log("ng After View Init");
+  }
+  ngAfterViewChecked(): void{
+    console.log("ng After View Checked");
+    console.log("++++++++++++++++++++++++++++")
+  }
+
+  ngDestroy(): void{
+    console.log("ng Destroy");
   }
 
 }

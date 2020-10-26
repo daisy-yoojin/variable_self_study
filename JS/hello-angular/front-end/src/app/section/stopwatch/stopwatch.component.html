@@ -2,8 +2,12 @@
     <div class='display'>
 
 
-        <app-time-display [inputData]="present"></app-time-display>
-        
+        <app-time-display [inputData]="present">
+            <h1>
+                룰루랄라
+            </h1>
+        </app-time-display>
+            
         <!-- <app-buttons (clickEvent)="startTime($event)"> </app-buttons> -->
         <!-- <app-time-display></app-time-display>
         <app-time-display></app-time-display>
@@ -14,10 +18,13 @@
         {{commandTest}}
         <app-buttons (clickEvent)="commandTest = $event"> </app-buttons>
      -->
-     <button (click)="goClock()">
-        시계로 이동
-    </button>
+     
     
+    </div>
+    <div class="btn-wrapper display">
+        <button (click)="goClock()">
+            시계로 이동
+        </button>
     </div>
 
     <!-- /가 없으면 기존 링크 뒤에 작성한 string값이 붙어 들어간다. 지금은 해당 주소에 대한 작업이 없으므로 작업 x -->
