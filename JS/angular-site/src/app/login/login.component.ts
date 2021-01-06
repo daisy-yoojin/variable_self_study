@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     
     this.form.valueChanges.subscribe(data => 
       {
-        this.utilService.updateFormErrors(this.form, this.formErrors, this.formErrorMessages);
+        // this.utilService.updateFormErrors(this.form, this.formErrors, this.formErrorMessages);
       });
   };
 
@@ -51,10 +51,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   submit(){
-    this.utilService.makeFormDirtyAndUpdateErrors(this.form, this.formErrors, this.formErrorMessages);
-    if(this.form.valid){
-      this.authService.login(this.form.)
-    }
+    // this.utilService.makeFormDirtyAndUpdateErrors(this.form, this.formErrors, this.formErrorMessages);
+    // if(this.form.valid){
+    //   this.authService.login(this.form.valid)
+    // }
 
   }
 
