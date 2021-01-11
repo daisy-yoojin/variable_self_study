@@ -1,0 +1,114 @@
+
+* class type vs function type
+    - class type
+        ->  render 함수 필요 + jsx 리턴필요. (html code)  
+    -차이점
+        -> state와 LifeCycle이 빠져있다.
+        -> 컴포넌트 초기 마운트가 아주 미세하게 빠르고, 메모리 자원을 덜 사용한다. 매우 미세하여 성능적으로 큰 차이는없다.
+
+* props & state
+    - props : 
+        + 부모 컴포넌트가 자식컴포넌트에게 주는 값
+        + 자식 컴포넌트에서는 props를 방아오기만하고, 받아온 props를 직접 수정 할 수 없다.
+        + defaultProps:
+            props의 기본값 설정
+
+    - state:
+        + 컴포넌트 내부에서 선언하며 내부에서 값을 변경할수 있다.
+        + 설정 방법:
+            state={
+                number:0 
+            }
+            constructor(props){
+                super(props);
+                state = {
+                    number: 1;
+                }
+            }
+        + class fields 가 먼저 실행되고, 그 다음에 constructor 에서 설정된 것이 나온다.
+        + this.setState
+            - state에 있는 값을 바꾸기 위해서 무조건 거쳐야하는 단계
+            - 컴포넌트가 re-rendering되도록 설계되어있다.
+            - 객체의 깊은 곳까지 확인하지 못한다.
+        + setState에 객체 아닌 함수 전달 (more better)
+            this.setState({
+                number: this.state.number + 1
+            });
+
+            =>
+
+            this.setState(
+                (state) => ({
+                    number: state.number
+                })
+            );
+
+* method
+    - 작석방법:
+        1)
+        handleIncrease = () => {
+            this.setState({
+                number: this.state.number + 1
+            });
+        }
+        2) *함수만 작성시 click event에서 this가 undefined로 나타나서 제댛로 처리되지않게 된다. click event과정에서 "this"와 연결이 끊겨버리기 떄문.
+        handleIncrease() {
+            this.setState({
+                number: this.state.number + 1
+            });
+        }
+        * constructor에서 아래와 같이 선언하여 연결하거나 1)같이 작성한다.
+        constructor(props) {
+            super(props);
+            this.handleIncrease = this.handleIncrease.bind(this);
+        } 
+
+
+* event function 주의
+    - 이벤트이름 설정시 camelCase로 설정해줘야한다. (ex. onclick -> onClick , onmousedown -> onMouseDown, onchange -> onChange)
+    - 이벤트에 전달해주는 값은 함수여야한다. onClick={this.handleIncrease()}이런식으로 하게된다면 렌더시 마다 해당 함수 호출
+        (렌더링 -> 함수 호출 -> setState -> 렌더링 -> 함수 호출 -> 무한반복...) 꼭! 메소드 호출하지 말것
+
+* react lifeCycle
+# Component 초기 생성
+    - component가 새로 만들어질때마다 함수 호출
+        + constructor 
+            : 컴포넌트가 새로 만들어질 때마다 이 함수가 호출
+
+    - browser가 나타나기 전 호출 api
+        + componentWillMount
+            : 컴포넌트가 화면에 나가나기 직전에 호출
+            : 주로 브라우저가 아닌 환경에서 (서버사이드)도 호출하는 용도로 사용
+            : 리액트 v16.3 에서는 ※해당 API 가 deprecated,※ v16.3 이후부터는 UNSAFE_componentWillMount() 라는 이름으로 사용.
+            : constructor 와 componentDidMount 에서 충분히 처리 할 수 있습니다.
+
+    - 컴포넌트가 화면에 나타나게 됐을 때 호출
+        + componentDidMount
+            : 외부 라이브러리 연동: D3, masonry, etc
+            : 컴포넌트에서 필요한 데이터 요청: Ajax, GraphQL, etc
+            : DOM 에 관련된 작업: 스크롤 설정, 크기 읽어오기 등
+
+# Component 업데이트 : 컴포넌트가 업데이트는 props 의 변화, 그리고 state 의 변화에 따라 결정
+    - 컴포넌트가 새로운 props 를 받게됐을 때 호출
+        + componentWillReceiveProps
+            : 주로, state 가 props 에 따라 변해야 하는 로직을 작성
+            : this.props 는 아직 바뀌지 않은 상태
+            : 새로 받게될 props 는 nextProps 로 조회 할 수 있으며, 이 때 this.props 를 조회하면 업데이트 되기 전의 API 
+            : ※해당 API 가 deprecated,※ UNSAFE_componentWillReceiveProps() 라는 이름으로 사용
+            : 상황에 따라 새로운 API getDerivedStateFromProps 로 대체 될 수도 있음.
+
+    - props 로 받아온 값을 state 로 동기화 하는 작업을 해줘야 하는 경우에 사용
+        + [NEW] static getDerivedStateFromProps()
+            static getDerivedStateFromProps(nextProps, prevState) {
+                // 여기서는 setState 를 하는 것이 아니라
+                // 특정 props 가 바뀔 때 설정하고 설정하고 싶은 state 값을 리턴하는 형태로
+                // 사용됩니다.
+                /*
+                if (nextProps.value !== prevState.value) {
+                    return { value: nextProps.value };
+                }
+                return null; // null 을 리턴하면 따로 업데이트 할 것은 없다라는 의미
+                */
+            }
+
+            https://velopert.com/3631
