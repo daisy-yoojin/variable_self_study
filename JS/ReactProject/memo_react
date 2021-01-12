@@ -201,4 +201,14 @@
                     }
                 - 이외는 componentDidCatch를 통해서 잡아주고 나머지 내용응 서버쪽에 기록하게 한다.
 
-            
+* input 
+    # multiple input    
+        - name 속성을 이용한다. => event.target.name으로 조회가 가능하다.
+
+* Computed property names
+    : start from ECMAS 2015 the object initiallizer syntax also support Computed property names. This allows ro put an expression in brackets [].
+    this will be computed and used as the property name.
+    ref. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names
+    
+
+                  
