@@ -79,7 +79,7 @@
         + componentWillMount
             : 컴포넌트가 화면에 나가나기 직전에 호출
             : 주로 브라우저가 아닌 환경에서 (서버사이드)도 호출하는 용도로 사용
-            : 리액트 v16.3 에서는 ※해당 API 가 deprecated,※ v16.3 이후부터는 UNSAFE_componentWillMount() 라는 이름으로 사용.
+            : ※ 리액트 v16.3 에서는 해당 API 가 deprecated,※ v16.3 이후부터는 UNSAFE_componentWillMount() 라는 이름으로 사용.
             : constructor 와 componentDidMount 에서 충분히 처리 할 수 있습니다.
 
     - 컴포넌트가 화면에 나타나게 됐을 때 호출
@@ -110,5 +110,95 @@
                 return null; // null 을 리턴하면 따로 업데이트 할 것은 없다라는 의미
                 */
             }
+        
+        + shouldComponentUpdate
+            shouldComponentUpdate(nextProps, nextState) {
+                // return false 하면 업데이트를 안함
+                // return this.props.checked !== nextProps.checked
+                return true;
+            }
+            : 컴포넌트를 최적화하는 작업에서 매우 유용하게 사용
+            : 쓸대없이 낭비되고 있는 이 CPU 처리량을 줄여주기 위해서 Virtual DOM 에 리렌더링 하는것도,불필요할경우엔 방지하기 위해 사용
+            : 기본적으로 true 반환. 조건에 따라 false를 반환하면 해당 조건에는 render함수 호출하지 않는다.
+        
+    - 이 함수 호출 후, render() 호출.
+        + componentWillUpdate
+            componentWillUpdate(nextProps, nextState) { }
+            : true를 반환했을때만 호출 된다. 만일, false룰 반환했다면 호출 되지 않는다. 
+            : 주로 애니메이션 효과 초기화, 이벤트 리스너 없애는 작업을한다.
+            : ※ v16.3 이후 deprecate ※ 기존의 기능은 getSnapshotBeforeUpdate 로 '대체' 될 수 있다.
+        
+    - 발생 시점 1. render() -> 2. getSnapshotBeforeUpdate -> 3. 실제 DOM에서 변화 발생 -> 3. componentDidMount
+        + [NEW] getSnapshotBeforeUpdate()
+             getSnapshotBeforeUpdate(prevProps, prevState) {
+                // DOM 업데이트가 일어나기 직전의 시점입니다.
+                // 새 데이터가 상단에 추가되어도 스크롤바를 유지해보겠습니다.
+                // scrollHeight 는 전 후를 비교해서 스크롤 위치를 설정하기 위함이고,
+                // scrollTop 은, 이 기능이 크롬에 이미 구현이 되어있는데, 
+                // 이미 구현이 되어있다면 처리하지 않도록 하기 위함입니다.
+                if (prevState.array !== this.state.array) {
+                    const {
+                        scrollTop, scrollHeight
+                    } = this.list;
 
-            https://velopert.com/3631
+                    // 여기서 반환 하는 값은 componentDidMount 에서 snapshot 값으로 받아올 수 있습니다.
+                    return {
+                        scrollTop, scrollHeight
+                    };
+                }
+            }
+
+            componentDidUpdate(prevProps, prevState, snapshot) {
+                if (snapshot) {
+                    const { scrollTop } = this.list;
+                    if (scrollTop !== snapshot.scrollTop) return; // 기능이 이미 구현되어있다면 처리하지 않습니다.
+                    const diff = this.list.scrollHeight - snapshot.scrollHeight;
+                    this.list.scrollTop += diff;
+                }
+            }
+
+    -  render() 를 호출하고난 다음에 발생
+        + componentDidUpdate(prevProps, prevState, snapshot){ }
+            : this.props와 this.state가 바뀐 상태
+            : parameter 이용하여 prevProps와 prevState를 조회 할 수 있다.
+            : getSnapshotBeforeUpdate 에서 반환한 snapshot 값은 세번째 값으로 받아옴
+
+# Component 제거: component가 더 이상 필요하지 않게 되면 호출
+        + componentWillUnMount 
+            componentWillUnMount(){
+                //이벤트, setTimeout, 외부 라이브러리 인스턴스 제거
+            }
+            : 외부 라이브러리를 사용한게 있고 해당 라이브러리에 dispose 기능이 있다면 여기서 호출
+                ex) setTimeout -> clearTimeout사용
+
+# Component 에러발생: render함수에서 에러가 발생한다면, 리액트 앱이 crash됨. 
+    - render에 표기하면 됨
+        * componentDidCatch
+            componentDidCatch(error, info) {
+                this.setState({
+                    error: true
+                });
+            }
+            : state.error를 true로 설정하고 render함수쪽에 띄워주면 됨
+            : 주의할점
+                - 컴포넌트 자신의 render함수에서 에러가 발생해버리는 것은ㅇ 잡아낼 수 없지만, 자식컴포넌트 내부에서 발생하는 에러들을 잡을 수 있다.
+            : 렌더링부분에서 오류가 발생하는 이유
+                - 존재하지 않는 함수를 호출하려고 할때 (예를들어 props로 받을줄 알았던 함수가 전달되지 않았을때)
+                - 배열이나 객체가 올줄 알았는데, 해당 객체나 배열이 존재하지 않을때
+            :해결방법
+                - render() 조건추가
+                    render() {
+                        if (!this.props.object || !this.props.array || this.props.array.length ===0) return null;
+                        // object 나 array 를 사용하는 코드
+                    }
+                - 컴포넌트의 기본값을 설정하는 defaultProps를 통해서 설정
+                    class Sample extends Component {
+                        static defaultProps = {
+                            onIncrement: () => console.warn('onIncrement is not defined'),
+                            object: {},
+                            array: []
+                        }
+                    }
+                - 이외는 componentDidCatch를 통해서 잡아주고 나머지 내용응 서버쪽에 기록하게 한다.
+
+            
