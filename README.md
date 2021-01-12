@@ -24,10 +24,10 @@
   - MapReduce
   - HDFS Architecture
   
-  -----
+-----
   
-  (2020-01-03 ~ )
-  - About React 
-    - Ref. velopert
-    - Definition
-    - Component LifeCycle
+(2020-01-03 ~ )
+- About React 
+  - Ref. velopert
+  - Definition
+  - Component LifeCycle
