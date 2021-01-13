@@ -42,6 +42,7 @@
                     number: state.number
                 })
             );
+        + Array 설정시 주의 필요. 하위 Array내용 참고
 
 * method
     - 작석방법:
@@ -210,5 +211,37 @@
     this will be computed and used as the property name.
     ref. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names
 
-https://velopert.com/3634
-        
+* Array in React
+    + state내부의 값를 직접적으로 수정하면 절대로 안된다. 
+        : js) this.state.array.push('some value'); ( React X )
+        : 불변성 유지 위반
+        : push, slice, unshift, pop 내장함수는 부적합한 사용이다. (배열자체를 직접 수정하게 됨으로)
+    => 새 배열을 만들어내는 concat, slice, map, filter같은 함수를 사용해야한다.
+    => 불변성 유지는 React에서 모든것들이 필요한 상황에 re-rendering되도록 설계가 가능하다. 
+    => 후, 성능 최적화가 가능하기 때문이다.
+
+### 데이터 추가
+-> example : concat이용
+
+### 데이터 렌더링
+    - map  
+    : callback함수를 각각의 요소에 대해 한번씩 순서대로 불러 그 함수의 반환값으로 새로운 배열 생성
+    : callback함수의 경우 undefined를 포함해서 배열 값이 들어있는 인덱스에 대해서만 호출된다.
+        즉, 값이 삭제되거나 아직 할당/정의되지 않은 인덱스에 대해서는 호출되지 않는다.
+    : callback 함수는 호출될 때 대항 요소의 값, 요소의 인덱스, map을 호출한 원본배열의 인수를 전달 받는다.
+    : thisArg(매개변수) -> callback this로 사용.
+    : 호출한 배열의 값을 변형하지않는다. 단, callback 함수에 의해서 변형될 수는 있다.
+    : 처리 요소의 번위는 첫 callback을 호출하기 전에 정해진다. 이후의 요소는 호출하지않는다.
+    : arr.map(callback(currentValue[, index[, array]])[, thisArg])
+        currentValue - 처리할 현재 요소
+        index (optional) - 처리할 현재 요소의 인덱스
+        array (optional) - map()을 호출할 배열
+        thisArg (optional) - callback을 실행할 때 this로 사용되는 값
+    : return value
+        배열의 각 요소에 대해 실행한 callback의 결과를 모은 새로운 배열.
+    : ref. https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+
+
+내일 할일
+https://velopert.com/3636
+map 예제 확인
