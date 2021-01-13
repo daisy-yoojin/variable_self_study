@@ -31,3 +31,5 @@
   - Ref. velopert
   - Definition
   - Component LifeCycle
+  - About array and map function
+    - data usage in react
