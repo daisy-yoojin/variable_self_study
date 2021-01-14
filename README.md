@@ -33,3 +33,5 @@
   - Component LifeCycle
   - About array and map function
     - data usage in react
+  - Data Process
+    - CRUD with Data in FrontEnd
