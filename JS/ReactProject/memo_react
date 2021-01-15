@@ -316,7 +316,7 @@ re-rendering을 막아줄 수 있다.
         : https://velopert.com/3587
 
 + 타입 시스템
-    - typeScript 사용
+    - typeScript 사용 (typeScript + redux + )
         : https://velopert.com/3595
         : https://velog.io/@velopert/using-react-with-typescript (renewal)
     - Flow  사용
