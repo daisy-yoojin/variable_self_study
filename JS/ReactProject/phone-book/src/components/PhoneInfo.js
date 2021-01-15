@@ -60,8 +60,19 @@ class PhoneInfo extends Component {
             });
         }
     }
+    // virtualdom에 그리는 자원을 아끼기위해서 
+    shouldComponentUpdate(nextProps, nextState){
+      // 수정 상태가 아니고, info 값이 같다면 리렌더링 안함
+      if(!this.state.editing && !nextState.editing 
+        && nextProps.info === this.props.info){
+          return false;
+      }
+      // 나머지의 경우 re-rendering
+      return true;
+    }
     
     render() {
+      console.log('render PhoneInfo ' + this.props.info.id);
       const style = {
         border: '1px solid black',
         padding: '8px',

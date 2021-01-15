@@ -6,9 +6,13 @@ class PhoneInfoList extends Component {
         data: [],
         onRemove: () => console.warn('onRemove not defined'),
         onUpdate: () => console.warn('onUpdate not defined'),
-      }
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        return nextProps.data !== this.props.data;
+    }
   
     render() {
+        console.log('render PhoneInfoList');
         console.log(this.props)
         const { data, onRemove, onUpdate} = this.props;
         const list = data.map(
