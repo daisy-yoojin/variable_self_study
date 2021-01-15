@@ -1,1 +1,7 @@
-record of redux
+### 사용하는 이유
+
+* redux 상태관리 lib.
+    - Redux 사용 전,
+        모든 값과 상태는 component를 통해 동작하며 props와 state를 이용해 동작한다.
+    - Redux 사용시,
+        component 외부에서 상태 관리가 가능하기에 component간의 관계를 거칠 필요가 없다.
