@@ -264,4 +264,61 @@
     - 여러 함수 및 method를 이용하는 부분을 잘 생각해보아야 할 것.
 
 ### 데이터 필터링 구현
-https://velopert.com/3640
+    - 데이터 불변성 : 데이터 비교를 위함
+    
+### 최적화
+    - 빠른 반응으로 virtual dom에 그려지는 자원을 아껴주기위해 
+        shouldComponentUpdate를 통해 최적화 해 줄 수 있다.
+
+///////////// 짧은 요약
+- 재사용이 가능한 컴포넌트를 만들것
+- props는 부모에게서 전달받은 값이다.
+- state는 자기 자신이 지니고 잇는 데이터이다.
+- props나 state가 변경되면 component는 re-rendering된다.
+- LifeCycle API를 통해 component mount, update, inmount 전후로 처리할 로직을 설정하거나
+re-rendering을 막아줄 수 있다.
+
+///////////// 추가적으로 해결해야 할 사항
++ 스타일링
+    - .css파일 생성하여 사용
+        : https://velopert.com/3480
+    - Sass를 사용하는것.
+        : https://velopert.com/3503
+    - LESS나 stylus 등으로 사용해 볼 수 있다.
+    - js 내부에 바로 스타일링하는 styled-componetns 사용 방법이 있다.
+        : https://velopert.com/3447
+    - 가장 최신 자료: https://velog.io/@velopert/react-component-styling
+
++ 상태관리
+    - Redux
+        : https://velopert.com/3528
+    - MobX
+
++ 불변성 유지
+    - Immutable.js 
+        : https://immutable-js.github.io/immutable-js/
+        + 예제
+        :https://velopert.com/3486
+    - (new) Immer
+        : https://github.com/immerjs/immer
+
++ 라우팅
+    - react-router
+        : https://github.com/ReactTraining/react-router
+        + 예제
+        : https://velopert.com/3411
+    - next.js
+        : https://github.com/vercel/next.js
+
++ 테스팅
+    - 도구
+        : Jest 와 Enzyme 
+        : https://velopert.com/3587
+
++ 타입 시스템
+    - typeScript 사용
+        : https://velopert.com/3595
+        : https://velog.io/@velopert/using-react-with-typescript (renewal)
+    - Flow  사용
+
+
