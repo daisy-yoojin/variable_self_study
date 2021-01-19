@@ -1,0 +1,7 @@
+### Immutable JS
+- React 에서는 불변함 (Immutability) 를 지키며 상태 관리를 하는 것을 매우 편하게 해주는 라이브러리 Immutable.js
+- React Component의 state를 변경할때느 무조건 setState를 사용하여 업데이트를 해주어야하며 업데이트 과정에서 기존 객체의값을 직접적으로 수정하면
+    절대 안된다.
+- setState 를 통하여 state 를 변경하지 않으면 리렌더링이 되지 않음. => 최적화를 할 수 없음
+
+https://velopert.com/3486
