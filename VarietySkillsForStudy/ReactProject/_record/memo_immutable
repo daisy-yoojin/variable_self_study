@@ -15,4 +15,5 @@
     + 일반 자바스크립트 객체로 변환 할 땐 toJS
     + List엔 배열 내장함구와 비슷한 함수들이 있다.
         : push, slice, filter, sort, concat..전부 불변함을 유지함
+- immutable link
 https://velopert.com/3486
