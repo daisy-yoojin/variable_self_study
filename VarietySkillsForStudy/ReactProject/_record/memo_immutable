@@ -4,4 +4,15 @@
     절대 안된다.
 - setState 를 통하여 state 를 변경하지 않으면 리렌더링이 되지 않음. => 최적화를 할 수 없음
 
+- yarn add immutable
+    + 객체는 Map
+    + 배열은 List
+    + 설정할땐 set
+    + 읽을땐 get
+    + 읽은다음에는 설정할땐 update
+    + 내부에 있는걸 ~할땐 뒤에 In을 붙인다.
+        : setIn, getIn, updateIn
+    + 일반 자바스크립트 객체로 변환 할 땐 toJS
+    + List엔 배열 내장함구와 비슷한 함수들이 있다.
+        : push, slice, filter, sort, concat..전부 불변함을 유지함
 https://velopert.com/3486
