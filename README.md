@@ -35,3 +35,5 @@
     - data usage in react
   - Data Process
     - CRUD with Data in FrontEnd
+   
+  ____ todo : axios , store , redux
