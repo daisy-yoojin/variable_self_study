@@ -1,8 +1,10 @@
 import axios from 'axios';
-const ACCOUNT_API_BASE_URL= "http://localhost:8080/react/";
+const ACCOUNT_API_BASE_URL= "http://localhost:8080/react";
 
 class ApiService{
     fetchAccount(){
+        console.log('>>> axios <<<')
+        console.log(axios.get(ACCOUNT_API_BASE_URL))
         return axios.get(ACCOUNT_API_BASE_URL);
     }
 

@@ -62,7 +62,7 @@ class AddAccountComponent extends Component{
                 </form>
             </div>
         );
-    }
+    }    
 }
 
 const formContainer ={
