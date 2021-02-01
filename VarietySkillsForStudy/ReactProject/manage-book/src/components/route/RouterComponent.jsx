@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import InputForm from '../InputForm';
 import AccountListComponent from '../user/AccountListComponent';
 import AddAccountComponent from '../user/AddAccountComponent';
 import EditAccountComponent from '../user/EditAccountComponent';
