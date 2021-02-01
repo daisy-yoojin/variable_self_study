@@ -85,7 +85,7 @@ class AccountListComponent extends Component{
                         {this.state.accounts.map( account=>
                             <TableRow key={account.id}>
                                 <TableCell>{account.id}</TableCell>
-                                <TableCell>{account.pwd}</TableCell>
+                                <TableCell ><input type="password" value={account.pwd} readonly/></TableCell>
                                 <TableCell>{account.name}</TableCell>
                                 <TableCell>{account.email}</TableCell>
                                 <TableCell>{account.phone}</TableCell>

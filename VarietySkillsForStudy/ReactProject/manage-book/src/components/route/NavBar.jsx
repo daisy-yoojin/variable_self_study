@@ -19,7 +19,7 @@ const NavBar = ()=>{
                     <Typography variant="h6" style={style}>
                         Account Applicatiom
                     </Typography>
-                    <Button color='inherit'></Button>
+                    <Button color='inherit'>Login</Button>
                 </Toolbar>
             </AppBar>
         </div>
