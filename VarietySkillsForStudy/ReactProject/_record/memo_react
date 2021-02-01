@@ -321,4 +321,10 @@ re-rendering을 막아줄 수 있다.
         : https://velog.io/@velopert/using-react-with-typescript (renewal)
     - Flow  사용
 
+////// router
 
+- this.props.history.push
+    : props variables can be passed more freely
+
+////// Login - Modal
+https://velog.io/@7p3m1k/React-modal-%EB%A1%9C%EA%B7%B8%EC%9D%B8%EC%B0%BD-%EB%A7%8C%EB%93%A4%EA%B8%B0
