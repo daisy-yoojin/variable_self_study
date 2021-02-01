@@ -22,7 +22,7 @@ class EditAccountComponent extends Component{
         this.loadAccount();
     }
     loadAccount= ()=>{
-        ApiService.fetchAccountById(window.localStorage.getItem('id'))
+        ApiService.fetchAccountById(window.localStorage.getItem('accountId'))
         .then(res =>{
             let account = res.data;
             this.setState({
@@ -33,6 +33,9 @@ class EditAccountComponent extends Component{
                 phone: account.phone
 
             })
+        })
+        .catch(err => {
+            console.log('loadAccount() 에러', err);
         })
     }
     onChange = (e)=>{
@@ -49,7 +52,7 @@ class EditAccountComponent extends Component{
             email: this.state.email,
             phone:this.state.phone,
         }
-        ApiService.addAccount(account)
+        ApiService.editAccount(account)
         .then(res =>{
             this.setState({
                 message: account.name + '님이 성공적을 수정되었습니다.'
@@ -68,7 +71,7 @@ class EditAccountComponent extends Component{
                 <form>
                     <TextField type="text" placeholder='Edit your ID' name='id' fullWidth margin='normal'
                     value={this.state.id} onChange={this.onChange}/>
-                    <TextField type="text" placeholder='Edit your password' name='pwd' fullWidth margin='normal'
+                    <TextField type="password" placeholder='Edit your password' name='pwd' fullWidth margin='normal'
                     value={this.state.pwd} onChange={this.onChange}/>
                     <TextField type="text" placeholder='Edit your Name' name='name' fullWidth margin='normal'
                     value={this.state.name} onChange={this.onChange}/>
@@ -85,7 +88,9 @@ class EditAccountComponent extends Component{
 
 const style={
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    color: '#000000',
+    fontWeight:800,
 }
 
 export default EditAccountComponent;

@@ -3,25 +3,24 @@ const ACCOUNT_API_BASE_URL= "http://localhost:8080/react";
 
 class ApiService{
     fetchAccount(){
-        console.log('>>> axios <<<')
-        console.log(axios.get(ACCOUNT_API_BASE_URL))
         return axios.get(ACCOUNT_API_BASE_URL);
     }
 
     fetchAccountById(accountId){
-        return axios.get(ACCOUNT_API_BASE_URL+'/'+accountId);
+        return axios.get(ACCOUNT_API_BASE_URL+'/get/'+accountId);
     }
 
     deleteAccount(accountId){
-        return axios.delete(ACCOUNT_API_BASE_URL+'/'+accountId);
+        return axios.delete(ACCOUNT_API_BASE_URL+'/delete/'+accountId);
     }
 
     addAccount(account){
+        console.log('passing account: '+account);
         return axios.post(ACCOUNT_API_BASE_URL, account);
     }
 
     editAccount(account){
-        return axios.put(ACCOUNT_API_BASE_URL, account.id , account);
+        return axios.put(ACCOUNT_API_BASE_URL+'/update/'+account.id, account);
     }
 
 }

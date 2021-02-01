@@ -29,7 +29,6 @@ class AccountListComponent extends Component{
     reloadAccountList = ()=>{
         ApiService.fetchAccount()
         .then(res=>{
-            console.log(res.data);
             this.setState({
                 accounts:res.data
             })
@@ -60,7 +59,7 @@ class AccountListComponent extends Component{
         this.props.history.push('/edit-account');
     }
     
-    addAccount = (ID) =>{
+    addAccount = () =>{
         window.localStorage.removeItem("accountId");
         this.props.history.push('/add-account');
     }
@@ -85,6 +84,7 @@ class AccountListComponent extends Component{
                     <TableBody>
                         {this.state.accounts.map( account=>
                             <TableRow key={account.id}>
+                                <TableCell>{account.id}</TableCell>
                                 <TableCell>{account.pwd}</TableCell>
                                 <TableCell>{account.name}</TableCell>
                                 <TableCell>{account.email}</TableCell>
@@ -106,7 +106,9 @@ class AccountListComponent extends Component{
 
 const style={
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    color: '#000000',
+    fontWeight:800,
 }
 
 export default AccountListComponent;

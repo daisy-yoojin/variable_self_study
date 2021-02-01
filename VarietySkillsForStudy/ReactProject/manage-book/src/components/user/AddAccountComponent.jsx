@@ -50,7 +50,7 @@ class AddAccountComponent extends Component{
                 <form style={formContainer}>
                     <TextField type="text" placeholder='Enter your ID' name='id' fullWidth margin='normal'
                     value={this.state.id} onChange={this.onChange}/>
-                    <TextField type="text" placeholder='Enter your password' name='pwd' fullWidth margin='normal'
+                    <TextField type="password" placeholder='Enter your password' name='pwd' fullWidth margin='normal'
                     value={this.state.pwd} onChange={this.onChange}/>
                     <TextField type="text" placeholder='Enter your Name' name='name' fullWidth margin='normal'
                     value={this.state.name} onChange={this.onChange}/>
@@ -72,6 +72,8 @@ const formContainer ={
 
 const style={
     display: ' flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    color: '#000000',
+    fontWeight:800,
 }
 export default AddAccountComponent;
