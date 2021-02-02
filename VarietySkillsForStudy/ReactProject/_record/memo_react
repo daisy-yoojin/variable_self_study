@@ -321,6 +321,9 @@ re-rendering을 막아줄 수 있다.
         : https://velog.io/@velopert/using-react-with-typescript (renewal)
     - Flow  사용
 
++ react 학습 순서
+es6 -> react -> hooks -> redux -> redux-thunk
+
 ////// router
 
 - this.props.history.push
