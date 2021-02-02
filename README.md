@@ -36,4 +36,8 @@
   - Data Process
     - CRUD with Data in FrontEnd
    
-  ____ todo : axios , store , redux
+  ____ todo : axios , store , redux , redux-thunk
+
+  - check react lifecycle
+  - remind managebook-react 
+  - re-prac react docs.
