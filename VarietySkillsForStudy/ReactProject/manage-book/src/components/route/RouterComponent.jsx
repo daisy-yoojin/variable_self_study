@@ -14,6 +14,7 @@ const AppRouter =()=>{
                         <Route path="/accounts" component={AccountListComponent} />
                         <Route path="/add-account" component={AddAccountComponent}/>
                         <Route path="/edit-account" component={EditAccountComponent}/>
+                        <Route path="/signup" />
                     </Switch>
                 </div>
             </BrowserRouter>
