@@ -111,7 +111,7 @@ class AccountListComponent extends Component{
                     <TableHead>
                         <TableRow>
                             <TableCell>ID</TableCell>
-                            <TableCell>Password</TableCell>
+                            {/* <TableCell>Password</TableCell> */}
                             <TableCell>Name</TableCell>
                             <TableCell>Email</TableCell>
                             <TableCell>Phone</TableCell>
@@ -123,7 +123,7 @@ class AccountListComponent extends Component{
                         {this.state.accounts.map( account=>
                             <TableRow key={account.id}>
                                 <TableCell>{account.id}</TableCell>
-                                <TableCell ><input type="password" value={account.pwd} readOnly/></TableCell>
+                                {/* <TableCell ><input type="password" value={account.pwd} readOnly/></TableCell> */}
                                 <TableCell>{account.name}</TableCell>
                                 <TableCell>{account.email}</TableCell>
                                 <TableCell>{account.phone}</TableCell>

@@ -69,8 +69,8 @@ class EditAccountComponent extends Component{
             <div>
                 <Typography variant='h4' style={style}> Edit Account</Typography>
                 <form>
-                    <TextField type="text" placeholder='Edit your ID' name='id' fullWidth margin='normal'
-                    value={this.state.id} onChange={this.onChange}/>
+                    <TextField type="text standard-read-only-input" placeholder='Edit your ID' name='id' fullWidth margin='normal'
+                    value={this.state.id} onChange={this.onChange} InputProps={{readOnly: true,}}/>
                     <TextField type="password" placeholder='Edit your password' name='pwd' fullWidth margin='normal'
                     value={this.state.pwd} onChange={this.onChange}/>
                     <TextField type="text" placeholder='Edit your Name' name='name' fullWidth margin='normal'
