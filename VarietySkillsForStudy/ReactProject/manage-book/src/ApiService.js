@@ -20,7 +20,7 @@ class ApiService{
 
     addAccount(account){
         console.log('passing account: '+account);
-        return axios.post(ACCOUNT_API_BASE_URL, account);
+        return axios.post(ACCOUNT_API_BASE_URL+'/add', account);
     }
 
     editAccount(account){
