@@ -10,6 +10,10 @@ class ApiService{
         return axios.get(ACCOUNT_API_BASE_URL+'/get/'+accountId);
     }
 
+    fetchAccountByName(word){
+        return axios.get(ACCOUNT_API_BASE_URL+'/search?keyword='+word);
+    }
+
     deleteAccount(accountId){
         return axios.delete(ACCOUNT_API_BASE_URL+'/delete/'+accountId);
     }

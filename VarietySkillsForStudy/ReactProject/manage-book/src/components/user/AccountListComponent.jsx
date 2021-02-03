@@ -15,6 +15,9 @@ import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 class AccountListComponent extends Component{
+    state ={
+        word: '',
+    }
     constructor(porps){
         super(porps);
         
@@ -26,6 +29,19 @@ class AccountListComponent extends Component{
 
     componentDidMount(){
         this.reloadAccountList();
+    }
+
+    // function for search
+    searchAccount =(word)=>{
+        ApiService.fetchAccountByName(word)
+        .then(res=>{
+            this.setState({
+                accounts:res.data
+            })
+        })
+        .catch(err=>{
+            console.log('searchAccount(word) ERROR!', err);
+        })
     }
 
     reloadAccountList = ()=>{
@@ -66,8 +82,11 @@ class AccountListComponent extends Component{
         this.props.history.push('/add-account');
     }
 
-    searchAccount = ()=>{
-        
+    handleChange = (e)=>{
+        e.preventDefault();
+        this.setState({
+            word: e.target.value
+        })
     }
 
     render(){
@@ -79,11 +98,13 @@ class AccountListComponent extends Component{
                         <Button variant="contained" color="primary" onClick={this.addAccount}>계정 등록</Button>
                     </Grid>
                     <Grid item xs={12} sm={6}></Grid>
+                    {/* Search */}
                     <Grid item xs={12} sm={3}>
-                        <TextField type="text" placeholder='Enter your KeyWord' name='name' fullWidth margin='normal' value={this.state.name} onChange={this.onChange}/>
+                        {/* ||'' : input의 value가 undefined일 때 ''가 들어올 수 있도록 한다. */}
+                        <TextField type="text" placeholder='Enter your KeyWord' fullWidth margin='normal' value={this.state.word|| ''} onChange={this.handleChange}/>
                     </Grid>
                     <Grid item xs={12} sm={1}>
-                        <Button variant="contained" color="primary" onClick={this.searchAccount}>검색</Button>
+                        <Button variant="contained" color="primary" onClick={()=>this.searchAccount(this.state.word)}>검색</Button>
                     </Grid>
                 </Grid>
                 <Table>
