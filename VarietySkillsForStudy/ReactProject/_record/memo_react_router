@@ -42,5 +42,7 @@ ref. https://www.daleseo.com/react-router-basic/
                 ...
             </Router>
 
-
-
+    + exact prop: default path
+    + <Router></Router>로 전체를 감싸준다.
+    + <Route></Route> path를 component로 지정한다.
+    + <Link></Link>의 경우 Link로 이동
