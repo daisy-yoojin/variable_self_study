@@ -42,7 +42,6 @@ class AccountListComponent extends Component{
         .catch(err=>{
             console.log('searchAccount(word) ERROR!', err);
         })
-        // console.log(this.state.accounts);
     }
 
     reloadAccountList = ()=>{
@@ -88,8 +87,6 @@ class AccountListComponent extends Component{
         this.setState({
             word: e.target.value
         })
-        // console.log(this.state.word);
-        this.searchAccount(this.state.word);
     }
 
     render(){
@@ -106,9 +103,9 @@ class AccountListComponent extends Component{
                         {/* ||'' : input의 value가 undefined일 때 ''가 들어올 수 있도록 한다. */}
                         <TextField type="text" placeholder='Enter your KeyWord' fullWidth margin='normal' value={this.state.word|| ''} onChange={this.handleChange}/>
                     </Grid>
-                    {/* <Grid item xs={12} sm={1}>
+                    <Grid item xs={12} sm={1}>
                         <Button variant="contained" color="primary" onClick={()=>this.searchAccount(this.state.word)}>검색</Button>
-                    </Grid> */}
+                    </Grid>
                 </Grid>
                 <Table>
                     <TableHead>
@@ -123,7 +120,6 @@ class AccountListComponent extends Component{
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {console.log(this.state.accounts)}
                         {this.state.accounts.map( account=>
                             <TableRow key={account.id}>
                                 <TableCell>{account.id}</TableCell>
