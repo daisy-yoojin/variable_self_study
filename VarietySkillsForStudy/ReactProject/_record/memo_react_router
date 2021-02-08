@@ -1,5 +1,6 @@
 **** React router
 ref. https://www.daleseo.com/react-router-basic/
+     https://velopert.com/3417
 
 - 일반적인 routing에서 주의해야할점
     + 특정페이지에 대한 즐겨찾기 등록이 불가하다. 컴포넌트가 전환되더라도 브라우 저 주소창의 url은 고정 되어있다.
