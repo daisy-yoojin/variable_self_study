@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+// import React, { Component } from 'react';
+// import withSplitting from './withSplitting';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// const SplitMe = withSplitting(() => import('./SplitMe'));
+
+// class App extends Component {
+//   state = {
+//     visible: false
+//   };
+
+//   handleClick = () => {
+//     this.setState({
+//       visible: true
+//     });
+//   };
+
+//   render() {
+//     const { visible } = this.state;
+//     return (
+//       <div>
+//         <button onClick={this.handleClick}>Click Me</button>
+//         {visible && <SplitMe />}
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
+
+
+import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
+import { About, Home } from '../src/pages';
+
+class App extends Component {
+  handleMouseOver = ()=>{
+    About.preload();
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about" onMouseOver={this.handleMouseOver}>
+              About
+            </Link>
+          </li>
+        </ul>
+        <hr />
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+      </div>
+    );
+  }
 }
-
 export default App;

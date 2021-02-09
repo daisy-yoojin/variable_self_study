@@ -1,4 +1,4 @@
-# Refer Vlog 
+# Reference Blog
 https://velog.io/@velopert/react-code-splitting
 
 # Getting Started with Create React App
