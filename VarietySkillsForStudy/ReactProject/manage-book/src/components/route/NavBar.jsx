@@ -6,14 +6,22 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+//import MenuIcon from '@material-ui/icons/Menu';
+import LeftNavBar from './LeftNavBar';
 
 class NavBar extends Component{
     constructor(props){
         super(props);
         this.state={
             isModalOpen:false,
+            isLeftNavOpen:false,
         };
+    }
+    openLeftNav = ()=>{
+        this.setState({isLeftNavOpen: true});
+    }
+    clsoeLeftNav = ()=>{
+        this.setState({isLeftNavOpen: false});
     }
 
     openModal = ()=>{
@@ -29,11 +37,12 @@ class NavBar extends Component{
             <div>
                 <AppBar position="static">
                     <Toolbar>
-                        <IconButton edge="start" color="inherit" aria-label="Menu">
-                            <MenuIcon/>
+                        <IconButton edge="start" color="inherit" aria-label="Menu" onClick={this.openLeftNav}>                            
+                            <LeftNavBar isOpen={this.state.isLeftNavOpen} isClose={this.clsoeLeftNav}/>
                         </IconButton>
+                        
                         <Typography variant="h6" style={style}>
-                            Account Applicatiom
+                            Account Application
                         </Typography>
                         <Button color='inherit' onClick={this.openModal}>Login</Button>
                         <SignIn isOpen={this.state.isModalOpen} isClose={this.closeModal}/>
