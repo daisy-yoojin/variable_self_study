@@ -1,0 +1,18 @@
+#### React
+
+- 특이점
+ : Only for View.;
+ : 다른 프레임워크와 혼용가능
+
+- 상태관리
+ : redux or mobX
+ : redux + redux-sega / redux-thunk, MobX, superagent, 
+
+ - 작업환경
+  : node / npm / yarn 설치 
+  : code editor setting 
+  : git
+  : creat-react-app사용
+    + If does not use yarn, use
+        $ npm init react-app <project name>
+  : 
