@@ -1,3 +1,6 @@
+#### short form for node
+- when create react-app 
+
 #### React
 
 - 특이점
@@ -15,4 +18,80 @@
   : creat-react-app사용
     + If does not use yarn, use
         $ npm init react-app <project name>
-  : 
+
+- webpack
+
+- serviceWorker
+
+- render return 단위
+    : <div></div>
+    : v16이상 Fragment 사용 => <Fragment></Fragment>
+    : or <> </>로 대체
+    : import React, {Fragment} from 'react';
+
+- ES6
+    const(불변), let(동적) 사용 ( var 사용 지양 )
+    -> block 단위의 범위 / scope 함수단위
+
+- ERROR 처리
+    : 어떤 값이 undefined의 경우가 발생한다면 OR 연산자를 통해 
+        Nothing returned ERROR를 해결 할수 있다.
+        ex)
+            function App(){
+                const name = undefined;
+                return(
+                    <div>
+                        {name || '리액트']}
+                    </div>
+                );
+            }
+
+- inline Styling
+    -문자 사용 X , camelCase로 작성 할 것.
+
+- class type vs. function type
+    class type : state 기능 및 lifecycle 기능 사용 가능, 임의 method 정의 가능
+
+##### Props
+
+- defaultProps
+    : props를 전달 받는 component에 지정
+- children
+    : 해당 컴포넌트 태그 사이의 내용을 보여주는 props
+
+    App.js 파일 Ex)
+        const App = () => {
+            return <MyComponent>리액트</MyComponent>
+        }
+    export default App;
+
+    MyComponent.js Ex)
+        const MyComponent = props =>{
+            return(
+                <div>
+                    안녕하세요, 제 이름은 {props.name}입니다. <br />
+                    children 값은 {props.children}입니다.
+                </div>
+            );
+        };
+        MyComponent.defaultProps = {
+            name: '기본 이름'
+        }
+        export default MyComponent;
+    
+    결과)
+        안녕하세요, 제이름은 기본 이름입니다.
+        children 값은 리액트 입니다.
+
+- 비구조화 할당 문법을 통해 props 내부 값 추출
+    : 일일이 props.name, props.children을 사용하지않고
+      const {name, children} = props; 
+      를 선언하여 name, children 변수를 가져다 사용함으로써 짧은 코드 사용가능하다.
+    : 비구조화 할당 이라 부른다. (destructing assignment)
+
+
+
+
+
+- If
+ : {}를 이용한 삼항연산자 이용
