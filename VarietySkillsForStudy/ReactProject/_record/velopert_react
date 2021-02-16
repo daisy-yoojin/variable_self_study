@@ -73,11 +73,9 @@
                     children 값은 {props.children}입니다.
                 </div>
             );
-        };
-        MyComponent.defaultProps = {
-            name: '기본 이름'
-        }
+        };        
         export default MyComponent;
+
     
     결과)
         안녕하세요, 제이름은 기본 이름입니다.
@@ -88,8 +86,167 @@
       const {name, children} = props; 
       를 선언하여 name, children 변수를 가져다 사용함으로써 짧은 코드 사용가능하다.
     : 비구조화 할당 이라 부른다. (destructing assignment)
+    : propTypes -> name 값의 형태가 무조건 string으로 사용함을 설정
+    : isRequired : 필수 props 검열 가능
+
+    App.js 파일 Ex)
+        const App = () => {
+            return(
+                <MyComponent name="React" favoriteNumber={1}>
+                리액트
+                </MyComponent>
+            );
+        }
+    export default App;
+
+    MyComponent.js Ex)
+        import PropTypes from from 'prop-type';
+
+        const MyComponent = {{ name, favoriteNumber , children}} =>{
+            return(
+                <div>
+                    안녕하세요, 제 이름은 {name}입니다. <br />
+                    children 값은 {children}입니다. <br />
+                    좋아하는 숫자는 {favoriteNumber}입니다.
+                </div>
+            );
+        };
+        MyComponent.defaultProps = {
+            name: '기본 이름' 
+        }
+        
+        MyComponent.propTypes = {
+            name: PropTypes.string
+            favoriteNumber: PropTypes.number.isRequired
+        }
+        
+        export default MyComponent;
+
+- Usage of props in class type component
+    MyComponent.js ver.1 Ex)
+
+        class MyComponent extends Component{
+            render(){
+                const {name, favoriteNumber, children}= this.props; // 비구조화 할당
+                return(
+                    
+                );
+            }
+        }
+        MyComponent.defaultProps = {
+            name: '기본 이름' 
+        }
+        
+        MyComponent.propTypes = {
+            name: PropTypes.string
+            favoriteNumber: PropTypes.number.isRequired
+        }
+        
+        export default MyComponent;
+
+    MyComponent.js ver.2 Ex)
+        static defaultProps = {
+            name: '기본 이름' 
+        }
+        
+        static propTypes = {
+            name: PropTypes.string
+            favoriteNumber: PropTypes.number.isRequired
+        }
+        class MyComponent extends Component{
+            render(){
+                const {name, favoriteNumber, children}= this.props; // 비구조화 할당
+                return(
+                    
+                );
+            }
+        }
+
+        export default MyComponent;
 
 
+##### state
+
+    : 컴포넌트 내부에서 바뀔 수 있는 값.
+    : 비교) props의 경우 parent-Component가 설정하는 값. -> 부모 권한
+
+- constructor
+    constructor(props){
+        super(props);
+        this.state={
+            name: string,
+            ...
+        };
+    }
+
+- this.setState 이용
+
+- setState이후 특정 작업시,
+    Ex)
+        onClick={ ()=>{this.setState(
+            {
+                number: number+1
+            },
+            ()=>{
+                // 특정 작업
+                }
+            );}
+        }
+
+
+- 배열 비구조화 할당
+
+//기존
+const array = [1,2];
+const one = array[0];
+const two = array[1];
+--->
+const array =[1,2];
+const [one,two]=array;
+
+- useState사용
+  const [message, setMessage] = useState(초기값);
+
+- 주의사항
+ : 배열이나 객체 업데이트시 객체 사본을 생성하여 사본에 값을 업데이트 후,
+ 해당 상태를 setState 혹은 Setter 함수를 통해 업데이트한다.
+
+  Ex)
+    // 객체
+    const object = { a: 1, b:2, c:3 };
+    const nextObjext = { ...object, b:2}; // b값만 덮어쓰기
+
+    // 배열 다루기
+    const array = {
+        { id: 1, value: true},
+        { id: 2, value: true},
+        { id: 3, value: false}
+    }
+    let nextArray = array.concat({ id: 4 }); // 새 항목 추가
+    nextArray.filter(item=> item.id !==2); // id가 2인 항목 제거
+    nextArray.map(item=>(item.id === 1 ? {...item, value:false} : item )); // id가 1인 항목의 value값을 false로 변경
+
+- 사용의 목적과 이유
+    : from react Dev.team, Noticed to use functional Component and Hooks will be the main way to Dev.
+    : recommend to create Component with useState
+
+##### event Handling
+
+- 주의 사항
+    : 이벤트 이름은 camelCase로 작성
+        Ex) onclick -> onClick , onkeyup -> onKeyUp
+    : 이벤트에 실행할 자바스크립트 코드를 전달하는 것이 아니라 , 함수 형태의 값을 전달.
+    : DOM요소에만 이벤트를 설정 할 수 있다. (Component자체에 설정 X)
+        DOM요소: div, button, input, form ,span ..
+        <MyComponent onClick={doSomthing}> : MyComponent클릭시 doSomthing function실행이 아닌
+        doSomthing이라는 요소를 props로 전달
+    : 전달 받은 Event props를 Event에 전달 할 수 있다.
+
+- 제공 Event
+    : Clipboard, Composition, Keyboard, Focus, Form, Mouse, Selection,
+     Touch, UI, Wheel, Media, Image, Animation, Transition ...
+
+        
 
 
 
