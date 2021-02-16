@@ -59,7 +59,7 @@ export default function LeftNavBar() {
         onKeyDown={toggleDrawer(anchor, false)}
       >
         <List>
-          {['TodoList','Manage-book','Extra'].map((text, index) => (
+          {['Manage-book','TodoList','Extra'].map((text, index) => (
             <ListItem button key={text}>
               {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
               <ListItemIcon><ChevronRightIcon/></ListItemIcon>
