@@ -14,6 +14,10 @@ import MailIcon from '@material-ui/icons/Mail';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MenuIcon from '@material-ui/icons/Menu';
 import grey from '@material-ui/core/colors/grey';
+import DeleteIcon from '@material-ui/icons/Delete';
+// import spamSvg from '../../img/spam.svg';
+import spamSvg from '../../img/email.svg';
+import trashSvg from '../../img/trash.svg';
 
 const useStyles = makeStyles({
   list: {
@@ -40,6 +44,10 @@ export default function LeftNavBar() {
   
       setState({ ...state, [anchor]: open });
     };
+    const IconStyle = {
+      "height": "24px",
+      "width": "24px",
+    }
   
     const list = (anchor) => (
       <div
@@ -63,13 +71,16 @@ export default function LeftNavBar() {
         <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <DeleteIcon />}</ListItemIcon> */}
+              {/* <ListItemIcon>{index % 2 === 0 ? <img  src={spamSvg} style={IconStyle}/> : <DeleteIcon />}</ListItemIcon> */}
+              <ListItemIcon>{index % 2 === 0 ? <img src={spamSvg} style={IconStyle}/> : <img src={trashSvg} style={IconStyle}/>}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
       </div>
     );
+    
   
     return (
       <div>
