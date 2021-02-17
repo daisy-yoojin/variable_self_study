@@ -41,3 +41,6 @@
   - check react lifecycle
   - remind managebook-react 
   - re-prac react docs.
+  -
+  
+  # check again with 리액트를 다루는 기술 written by.velopert
