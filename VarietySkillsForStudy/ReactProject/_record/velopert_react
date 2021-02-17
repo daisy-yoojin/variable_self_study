@@ -220,7 +220,7 @@ const [one,two]=array;
     const array = {
         { id: 1, value: true},
         { id: 2, value: true},
-        { id: 3, value: false}
+        { id: 3, value: falsez}
     }
     let nextArray = array.concat({ id: 4 }); // 새 항목 추가
     nextArray.filter(item=> item.id !==2); // id가 2인 항목 제거
@@ -246,9 +246,77 @@ const [one,two]=array;
     : Clipboard, Composition, Keyboard, Focus, Form, Mouse, Selection,
      Touch, UI, Wheel, Media, Image, Animation, Transition ...
 
+
+- method binding
+    Ex) 
+        constructor(props){
+            this.handleChange = this.handleChange.bind(this)
+        }
+
+        handleChange(e){
+            this.setState({
+                message: e.target.value,
+            });
+        }
+        render(){
+            return(
+                <>
+                    <input name='message' value={this.state.message} onChange={this.handleChange}/>
+                </>
+            );
+        }
+
+    => 번거로움
+    => babel transform-class-properties 문법 이용한 화살표 함수로 method def.
+    Ex)
+        handleChange = (e)=>{
+            this.setState({
+                message: e.target.value,
+            });
+        }
+        render(){
+            return(
+                <>
+                    <input name='message' value={this.state.message} onChange={this.handleChange}/>
+                </>
+            );
+        }
+
+- multi-input
+    : e.target.name이용하여 각 input 구분
+    Ex)
+        state={
+            username:'',
+            message:'',
+        }
+
+        handleChange = (e)=>{
+            this.setState({
+                [e.target.name]: e.target.value,
+            });
+        }
+
+        render(){
+            return(
+                <>
+                    <input name='username' value={this.state.username} onChange={this.handleChange}/>
+                    <input name='message' value={this.state.message} onChange={this.handleChange}/>
+                </>
+            );
+        }
+
+    : handleChange(객체) 안에서 key를 []로 감싸면 그 안에 넣은 referrance가 가르키는 값이 실제
+    key값으로 사용된다.
+    : Ex)
+        const name = 'realValue' ;
+        cosnt ob ={
+            [name]:'value'
+        }
+     
+     Result)
+        {
+            'realValue' : 'value'
+        }
         
-
-
-
 - If
  : {}를 이용한 삼항연산자 이용
