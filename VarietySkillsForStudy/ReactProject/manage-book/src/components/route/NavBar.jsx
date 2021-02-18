@@ -38,8 +38,8 @@ class NavBar extends Component{
                 <AppBar position="static">
                     <Toolbar>
                         <IconButton edge="start" color="inherit" aria-label="Menu" onClick={this.openLeftNav}>                            
-                            <LeftNavBar isOpen={this.state.isLeftNavOpen} isClose={this.clsoeLeftNav}/>
                         </IconButton>                        
+                            <LeftNavBar isOpen={this.state.isLeftNavOpen} isClose={this.clsoeLeftNav}/>
                         <Typography variant="h6" style={style}>
                             App
                         </Typography>

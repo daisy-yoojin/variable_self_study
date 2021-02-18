@@ -4,10 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+import { ThemeProvider } from "@material-ui/core/styles";
+import { unstable_createMuiStrictModeTheme } from '@material-ui/core/styles';
+const theme = unstable_createMuiStrictModeTheme();
+
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>,
+  <ThemeProvider theme = {theme}>
     <App />
-  </React.StrictMode>,
+  </ThemeProvider>,
   document.getElementById('root')
 );
 

@@ -9,11 +9,11 @@ class App extends Component{
   render(){
     return (
       <div className="App">
-        <NavBar/>
+        {/* <NavBar/> */}
         {/* <InputForm/> */}
-        <Container>
+        {/* <Container> */}
           <AppRouter/>
-        </Container>
+        {/* </Container> */}
       </div>
     );
   }

@@ -18,8 +18,8 @@ class AccountListComponent extends Component{
     state ={
         word: '',
     }
-    constructor(porps){
-        super(porps);
+    constructor(props){
+        super(props);
         
         this.state={
             accounts: [],
