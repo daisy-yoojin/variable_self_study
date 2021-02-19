@@ -389,6 +389,29 @@ const [one,two]=array;
         };
 
 
+##### Component 반복
+    마운트 / 업데이트 / 언마운트 의 큰 구조
+    
+    1. 마운트
+        constructor
+        getDerivedStateFromProps
+        render
+        componentDidMount
+
+    2.업데이트 :
+        - props가 바뀔때
+        - state가 바뀔때
+        - 부모 컴포넌트가 re-rendering될때
+        - this.forceUpdate로 강제로 re-rendering trigger할때
+        getDerivedStateFromProps
+        shouldComponentUpdate
+        render
+        getSnapshotBeforeUpdate
+        componentDidUpdate
+    
+    3.언마운트
+        componentWillUnmount
+        componentDidCatch : error catch
 
 
 
