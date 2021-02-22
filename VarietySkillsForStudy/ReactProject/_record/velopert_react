@@ -414,6 +414,56 @@ const [one,two]=array;
         componentDidCatch : error catch
 
 
+##### Hooks
+
+- useEffect : component 렌더링 될 때마다 특정 작업을 수행하도록 설정 할 수 있다.
+            : componentDidMount + componentDidUpdate 로 봐도 무방
+
+            : Mount될떄만 실행하고 싶을때
+                - 업데이트 될 때 실행하지 않으려면,
+                    -> 함수의 두번째 파라미터로 비어있는 배열을 넣어준다.
+                - 특정값이 업데이트될떄만 실행하고 싶을때,
+                    -> useEffect의 두번째 파라미터로 전달 되는 배열안에 검사하려는 값을 넣어준다.
+                    -> Ex Class Component ver)
+                        componentDidMount(prevProps, prevState){
+                            if(prevProps.vlaue !== this.props.value){
+                                doSomthing();
+                            }
+                        }
+            : 뒷정리
+                - unMount되기 전이나 update되기 직전에 어떤 작업을 하고 싶다면
+                    -> useEffect에서 cleanup함수를 반환해야한다. 
+
+- useReducer : useState보다 다양한 component 상황에 따라 
+                다양항 상태를 다른 값으로 업데이트해주고 싶을 때 사용하는 Hook
+            
+            - Reducer: 현재 상태, 그리고 업데이트를 위해 필요한 정보를 담은 액션 값을 
+                전달 받아 새로운 상태를 반환하는 함수
+                새로운 상태를 만들때는 반드시 불변성 지킬 것.
+            + Redux에서는 action에 type 지정이 필요하지만
+                useReducer에서는 객체, type에 제한을 받지 않는다.
+            - useReducer(reducer function, {value1:기본값, value2:기본값, ...})
+            => state값과 dispatch함수를 받아온다.ㄴ
+                state: 현재 상태 , dispatch: action 발생 함수
+            -
+            - 장점: component 바깥으로 빼낼 수 있다.
+
+- useMemo : re-rendering 낭비를 방지 할 수 잇따.(최적화)
+- useCallback : rendering 성능 최적화를 위한 상황에서 사용
+                rendering이 자주 발생하는 component가 다수가 되면 최적화를 해주는것이 좋으므로 사용
+            - useCallback( 생성하고 싶은 함수 , 배열)
+                + 배열: 어떤 값이 바뀌었을때 함수를 새로 생성하는지 명시
+                    & 빈배열의 경우 rendering될때 function이 한번만 생성
+                    & [number, list]와 같이 값을 명시할 경우 해당 내용에 변경이 발생할 경우 
+
+==> useCallback은 useMemo로 함수를 반환하는 상황에서 더 편하게 사용할 수 있는 Hook.
+==> 슷자, 문자열, 객체처럼 일반 값을 재사용하려면 useMemo를 사용하고,
+==> 함수를 재사용하려면 useCallback을 사용
+    Ex) useCallback_useMemo.js
+
+- useRef: 함수형 component에서 ref를 쉽게 사용할 수 있도록 해준다.
+    => ex. Average.js 포커스 조절
+
 
 
 
