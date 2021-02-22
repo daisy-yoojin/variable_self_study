@@ -60,14 +60,14 @@ class LifeCycleSample extends Component{
             color: this.props.color
         };
         return(
-            <>
-                {this.props.missing.value}
+            <div>
+                {/* {this.props.missing.value} */}
                 <h1 style={style} ref = {ref=>this.myRef=ref}>
                     {this.state.number}
                 </h1>
                 <p>color: {this.state.color}</p>
                 <button onClick={this.handleClick}>+</button>
-            </>
+            </div>
         );
     }
 }
