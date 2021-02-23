@@ -464,7 +464,12 @@ const [one,two]=array;
 - useRef: 함수형 component에서 ref를 쉽게 사용할 수 있도록 해준다.
     => ex. Average.js 포커스 조절
 
+※ hooks 패턴을 사용하면 class type component를 작성하지 않고도 대부분의 기능을 구현 가능하다.
+※ 꼭 필요한 상황에서만 class type component구현을 추천한다.
 
+## REF. 
+    - https://nikgraf.github.io/react-hooks/
+    - https://github.com/rehooks/awesome-react-hooks
 
 
 - If
