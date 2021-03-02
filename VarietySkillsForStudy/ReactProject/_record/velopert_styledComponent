@@ -14,7 +14,15 @@
 - Naming Rule
     1. 이름-클래스 
         ex. App-header
-    2. BEM Naming : 어디에서 어떤용도로 사용되는지 명확하게 작성
+    2. BEM Naming : 어디에서 어떤용도로 사용되는지 명확하게 작
         ex. .card_title-primary
 
 - CSS Selector
+
+yarn add node-sass
+
+yarn eject 
+: webpack config re-range
+
+yarn add open-color include-media
+: color palette / directive design
