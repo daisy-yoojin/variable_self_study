@@ -4,12 +4,32 @@
     : 가장 기본적인 방식
 - Sass
     : 자주 사용되는 CSS 전처리기 중 하나로 확장된 CSS문법을 사용하여 CSS코드를 더욱 쉽게  작성 할 수 있도록 한다.
+    + 확장자명
+        .module.scss
+
 - CSS Module
     : 스타일 작성 시 CSS 클래스가 다른 CSS클래스의 이름과 절대 충돌하지 않도록 파일마다
         고유한 이름을 자동으로 생성해주는 옵션
+    : [파일이름]_[클래스이름]_[해시값]
+
+    + 클래스명을 multiple하게 사용할 경우 `${} ${} ${}`를 이용하여 사용한다.
+        <div className={`${styles.wrapper} ${styles.inverted}`}>
+    + 리터럴문법을 사용하고 싶지 않다면,
+        className={[styles.wrapper, styles.inverted].join(' ')}
+    + classnames
+        : 조건부 설정시 유용한 라이브러리
+
+
 - styled-components 
     : 스타일을 자바스크립트 파일에 내장시키는 방식으로 스타일을 작성함과 동시에 
         해당 스타일이 적용된 컴포넌트를 만들 수 있게한다.
+    : 자바스크립트 파일 안에 스타일을 선언하는 방식
+    : 'CSS-in-JS'라 칭함.
+    : https://github.com/MicheleBertoli/css-in-js 확인
+    *주의사항*
+    -> vscode 사용시 신택스 하이라이팅이 제대로 작동하지 않으므로 
+    -> vscode-styled-components를 검색하여 설치하면  코드에 색상이 정상적으로 작동된다.
+
 
 - Naming Rule
     1. 이름-클래스 
@@ -26,3 +46,6 @@ yarn eject
 
 yarn add open-color include-media
 : color palette / directive design
+
+yarn add styled-components
+: for use styled-components
