@@ -49,3 +49,9 @@ yarn add open-color include-media
 
 yarn add styled-components
 : for use styled-components
+
+yarn add node-sass
+: sass install
+
+yarn add sass-loader
+: sass-loader 설정
