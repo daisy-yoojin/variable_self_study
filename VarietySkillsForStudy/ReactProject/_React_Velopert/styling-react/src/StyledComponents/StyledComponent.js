@@ -37,7 +37,7 @@ const Button = styled.button`
         color: black;
       }
     `};
-  &+button {
+  & + button {
     margin-left: 1rem;
   }
 `;
