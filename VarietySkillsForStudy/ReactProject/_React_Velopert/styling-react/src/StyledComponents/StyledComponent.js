@@ -32,8 +32,8 @@ const Box = styled.div`
   @media (max-width: 768px){
     width: 100%;
   } */
-  ${media.desktop`width: 768px`};
-  ${media.tablet`width: 1024px`};
+  ${media.desktop`width: 768px;`}
+  ${media.tablet`width: 1024px;`};
   
 `;
 
