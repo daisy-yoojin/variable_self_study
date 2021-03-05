@@ -517,5 +517,26 @@ const [one,two]=array;
 
     yarn add immer
 
+
+###router 
+    : yarn add react-router-dom
+    : BrowserRouter
+        =>html5의 history api를 사용하여 페이지의 새로고침하지 않고도 주소를 변경하고,
+          현재 주소에 관련된 정보를 props로 쉽게 조회하거나 사용할 수 있도록 한다.
+    : <Route path="주소규칙" component={보여줄 컴포넌트}/>
+
+    :Link component 
+        클릭시 다른 주소로 이동시켜주는 component
+        a tag 함부로 사용하면 안될것
+    => 사용시 주의.
+        : 페이지 전환을 하려면 페이지를 새로 불러오지 않고,
+         애플리케이션은 그대로 유지한 상태에서 HTML5 History API를 사용하여 페이지 주소만 변경
+         Link Componenet 자체는a 태그로 이루어져있지만 페이지 전환을 방지하는 기능 내장
+    :multiple url이 한 component로 향하게 만들수있다.
+    :Link 와 Route의 차이점
+        -> Link는 a tag와 같이 url 주소를 변경 시켜준다.
+        -> Route는 component와 같은 역할을 하되 url의 값에 따라 변경이 되는 것이다.
+    : URL 쿼리 (-ing)
+
 - If
  : {}를 이용한 삼항연산자 이용
