@@ -475,10 +475,42 @@ const [one,two]=array;
 ***** 습관화 할것
 - props 전달시 useCallback 함수를 사용하여 함수를 감싸는 것을 습관화 할것
 
-*** filter  
+***** filter  
     const array = [1,2,3,4,5,6,7,8,9,10];
     const biggerThanFive = array.filter(number->number>5);
     // [6,7,8,9,10]
+
+***** 성능 최적화
+- 느려지는 원인 분석 
+    + 자신이 전달받은 props가 변경될때
+    + 자신의 state가 바뀔때
+    + 부모 컴포넌트가 리렌더링 될때
+    + forceUpdate 함수가 실행 될때
+
+- 처리 방법
+    + shouldComponentUpdate 사용
+        +++ 함수형 컴포넌트에서는 라이프사이클 메서드를 사용할 수 없다.
+    +  함수형 컴포넌트의 경우, React.memo를 사용하여 컴포넌트 성능 최적화
+        => 컴포넌트를 감싸주면 된다.
+    + 함수가 새로 만들어짐에대한 방지
+        => useState의 함수형 업데이트 기능을 사용
+            * 어떻게 업데이트할지 정의해 주는 업데이트 함수를 넣어준다
+        => useReducer를 사용
+
+- production mode 구현
+    yarn build
+    yarn global add serve
+    serve -s build
+
+#### 최적화
+    : useMemo로 렌더 방지
+    +
+    : 대략의 데이터로 인한 페이지 불필요 리렌더링 방지
+        yarn add react-virtualized
+    : console. performance확인해볼것
+
+###immer
+    : 불변성 유지의 depth가 깊어질 경우에대한 사용
 
 
 - If
