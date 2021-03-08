@@ -556,6 +556,11 @@ const [one,two]=array;
             경로 일치시, 특정 스타일 혹은 css 클래스를 적용할 수 있는 component
             스타일 적용시 activeStyle값을, css 클래스 적용시 activeClassName을 props로 넣어주면 된다.
 
+### async
+- promise
+- async
+- axios
+    yarn add axios
         
 
 - If
