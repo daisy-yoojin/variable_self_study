@@ -517,7 +517,6 @@ const [one,two]=array;
 
     yarn add immer
 
-
 ###router 
     : yarn add react-router-dom
     : BrowserRouter
@@ -536,7 +535,28 @@ const [one,two]=array;
     :Link 와 Route의 차이점
         -> Link는 a tag와 같이 url 주소를 변경 시켜준다.
         -> Route는 component와 같은 역할을 하되 url의 값에 따라 변경이 되는 것이다.
-    : URL 쿼리 (-ing)
+    : URL 쿼리 
+        yarn add qs
+    
+    :부가 기능 
+        - history
+            : 라우트로 사용된 component에 match, location과 함께 전달 되는 props 중 하나로,
+            객체를 통해 컴포넌트 내에 구현하는 메서드에서 라우터 API를 호출 할 수 있다.
+            ex_ 특정버튼을 눌렀을때 뒤로가거나 로그인 후 화면을 전환하거나 
+                다른 페이지로 이탈하는 것을 방지해야 할 때 history 사용
+        
+        - withRouter
+            HoC(Higher-order Componenet) / Route 선언 component가 아니여도 match, location, history 객체 접근 가능
+        
+        - switch
+            여러 route를 감싸 그 중 일치하는 단 하나의 라우트만 렌더링 시켜준다.
+            => 모든 규칙과 일치하지않을때 Not found 페이지 구현이 가능하다.
+        
+        - NavLink
+            경로 일치시, 특정 스타일 혹은 css 클래스를 적용할 수 있는 component
+            스타일 적용시 activeStyle값을, css 클래스 적용시 activeClassName을 props로 넣어주면 된다.
+
+        
 
 - If
  : {}를 이용한 삼항연산자 이용
