@@ -25,3 +25,74 @@
         type 필드는 반드시 가지고 있어야한다.
         -> 액션의 이름이라 생각할것.
         -> 그외 값: 나중에 상태 업데이트를 할 때 참고해야 할 값.
+        ex)
+            {
+                type:'ADD_TODO',
+                data:{
+                    id:1,
+                    text:'테스트01'
+                }
+            }
+
+            {
+                type:'CHANGE_INPUT',
+                text:'테스트02'
+            }
+    * 액션 함수
+        function addTodo(data){
+            return{
+                type:'ADD_TODO',
+                data:{
+                    id:1,
+                    text:'테스트01'
+                }
+            };
+        }
+
+        const addTodo = ()=>({
+            type:'ADD_TODO',
+            data:{
+                    id:1,
+                    text:'테스트01'
+                }
+        });
+
+    * 리듀서
+        : 변화를 일으키는 함수.
+        : 액션을 만들어서 발생시키면 리듀서가 현재 상태와 전달 받은 액션 객체를 파라미터로 받아온다.
+        : 두값을 참고하여 새로운 상태를 만든다.
+
+        ex)
+            const initialState ={
+                counter: 1
+            }
+            function reducer(state = initialState, action){
+                switch (action.type){
+                    case INCREMENT:
+                        return{
+                            counter: state.counter+1
+                        };
+                    default:
+                        return state;
+                }
+            }
+    * 스토어
+        : 한개의 프로젝트는 단 하나의 스토어만 가질 수 있다.
+        : 스토어 안에는 현재 애플리케이션 상태와 리듀서가 들어가 있고 그외 몇가지 내장함수를 포함한다.
+        * 디스패치
+            : 스토어 내장 함수중 하나
+            : '액션을 발생시키는 것'
+            : dispatch(action)과 같은 형태로 액션객체를 파라미터로 넣어서 호출
+            : 호출 시 스토어는 리듀서 함수를 실행시켜서 새로운 상태를 만든다.
+        * 구독
+            : 스토어 내장 함수중 하나
+            : subscribe 함수안에 리스너 함수를 파라미터로 넣어서 호출해주면, 
+                리스너 함수가 액션이 디스패치되어 상태가 업데이트 될때마다 호출된다.
+
+**** 리덕스는 리액트 종속되는 라이브러리가 아니다.
+    angular-redux , ember-redux , vue-redux에서 사용 할 수 있다.
+    vue는 주로 vuex를 사용
+    바닐라 JS와 함께사용 가능.
+
+
+**** Parcel
