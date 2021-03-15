@@ -50,6 +50,8 @@ const ChatInput = ({ channelName, channelId }) => {
           placeholder={`Message #${channelName}`}
         />
         <button className="btnEmoji" onClick={openModal}>Emoji</button>
+        {/* emojipicker add */}
+        {/* <Picker/> */}
         <button type="submit" onClick={sendMessage}>
           SEND
         </button>
