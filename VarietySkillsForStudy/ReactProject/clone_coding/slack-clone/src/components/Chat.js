@@ -27,7 +27,7 @@ const Chat = () => {
         setRoomMessages(snapshot.docs.map((doc) => doc.data()))
       );
   }, [roomId]);
-  console.log(roomDetails);
+  console.log('roomDetails >>>>>',roomDetails);
   console.log("MESSAGES >>>> ", roomMessages);
 
   return (
@@ -57,7 +57,9 @@ const Chat = () => {
               />
           ))}
       </div>
-      <ChatInput channelName={roomDetails?.name} channelId/>
+      <div className="chat__messages">
+      <ChatInput channelName={roomDetails?.name} channelId={roomId}/>
+      </div>
     </div>
   );
 };

@@ -55,6 +55,7 @@ const Sidebar = () => {
       <SidebarOption Icon={FileCopyIcon} title="File browser" />
       <SidebarOption Icon={ExpandLessIcon} title="Show less" />
       <hr />
+      {/* channel toggle */}
       <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
       <hr />
       <SidebarOption Icon={AddIcon} addChannelOptions title="AddChannels" />

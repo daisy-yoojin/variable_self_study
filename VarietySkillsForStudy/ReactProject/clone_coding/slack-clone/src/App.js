@@ -7,8 +7,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Chat from "./components/Chat";
 import Login from "./components/Login";
 import { useStateValue } from "./state/StateProvider";
-//add
-import { hot } from 'react-hot-loader';
+import Main from "./components/Main";
+// //add
+// import { hot } from 'react-hot-loader';
 
 const App = () => {
   // const [user, setUser] = useState(null);
@@ -32,7 +33,7 @@ const App = () => {
                   <Chat />
                 </Route>
                 <Route path="/">
-                  <h1>Welcome</h1>
+                  <Main/>
                 </Route>
               </Switch>
             </div>
@@ -43,4 +44,5 @@ const App = () => {
   );
 };
 
-export default hot(module)(App);
+// export default hot(module)(App);
+export default App;
