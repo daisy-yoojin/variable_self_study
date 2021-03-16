@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import ExtraComponent from '../todoList/ExtraComponent';
 import ToodListComponent from '../todoList/ToodListComponent';
 import AccountListComponent from '../user/AccountListComponent';
 import AddAccountComponent from '../user/AddAccountComponent';
@@ -20,6 +21,7 @@ const AppRouter =()=>{
                         <Route path="/signup" />
                         <Route path="/Manage-book" component={AccountListComponent}/>
                         <Route path="/Todos" component={ToodListComponent} />
+                        <Route path="/Extra" component={ExtraComponent} />
                     </Switch>
                 </div>
             </BrowserRouter>

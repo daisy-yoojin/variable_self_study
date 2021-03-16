@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 //import MenuIcon from '@material-ui/icons/Menu';
 import LeftNavBar from './LeftNavBar';
+import Login from '../login/Login';
 
 class NavBar extends Component{
     constructor(props){
@@ -44,7 +45,8 @@ class NavBar extends Component{
                             App
                         </Typography>
                         <Button color='inherit' onClick={this.openModal}>Login</Button>
-                        <SignIn isOpen={this.state.isModalOpen} isClose={this.closeModal}/>
+                        {/* <SignIn isOpen={this.state.isModalOpen} isClose={this.closeModal}/> */}
+                        <Login/>
                     </Toolbar>
                 </AppBar>
             </div>
