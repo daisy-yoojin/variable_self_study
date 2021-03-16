@@ -20,8 +20,6 @@ const Login = () => {
   }, []);
 
   const loginClickHandler = useCallback((e) => {
-    console.log('>>>>>>>>id:',id);
-    console.log('>>>>>>>>pwd:',pwd);
     AuthenticationService.login(id, pwd)
       .then((res) => {
         console.log(res.data);
