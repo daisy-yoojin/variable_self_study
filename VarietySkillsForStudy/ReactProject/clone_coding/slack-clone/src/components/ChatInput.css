@@ -18,21 +18,7 @@
     padding: 20px;
     /* flex: 0.7; */
 }
-.btnEmoji{
-    position: fixed;
-    bottom: 30px;
-    width: 60%;
-    border: 1px solid gray;
-    border-radius: 3px;
-    padding: 20px;
-}
 
-/* .chatInput > form > button{
-    position: fixed;
-    flex: 0.3;
-    bottom: 30px;
-    padding: 20px;    
-} */
 .chatInput > form > button{
     display: none !important;
 }

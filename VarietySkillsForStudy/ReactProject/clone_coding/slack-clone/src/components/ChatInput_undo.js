@@ -3,10 +3,18 @@ import db from "../firebase";
 import { useStateValue } from "../state/StateProvider";
 import "./ChatInput.css";
 import firebase from "firebase";
+import Picker from "emoji-picker-react";
 
 const ChatInput = ({ channelName, channelId }) => {
   const [input, setInput] = useState("");
   const [{ user }] = useStateValue();
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const [chosenEmoji, setChosenEmoji] = useState(null);
+
+  const onEmojiClick = (event, emojiObject) => {
+    setInput(input.concat(emojiObject.emoji))
+  };
 
   const onChange = useCallback((e) => {
     setInput(e.target.value);
@@ -26,6 +34,10 @@ const ChatInput = ({ channelName, channelId }) => {
     }
     setInput((e.target.value = ""));
   });
+  const modalStatus = (e) => {
+    e.preventDefault();
+    setModalOpen(!modalOpen);
+  };
 
   return (
     <div className="chatInput">
@@ -35,7 +47,17 @@ const ChatInput = ({ channelName, channelId }) => {
           onChange={onChange}
           placeholder={`Message #${channelName}`}
         />
-        <button type="submit" onClick={sendMessage}>
+        {/* emojipicker add */}
+        {/* <Picker/> */}
+        <button className="btnEmoji" onClick={modalStatus}>
+          🚀
+        </button>
+        {modalOpen ? (
+          <Picker onEmojiClick={onEmojiClick} />
+        ) : (
+          null
+        )}
+        <button className="btnSbmit" type="submit" onClick={sendMessage}>
           SEND
         </button>
       </form>
