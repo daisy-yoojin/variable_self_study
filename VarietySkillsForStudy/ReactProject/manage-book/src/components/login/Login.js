@@ -11,8 +11,17 @@ const Login = () => {
   const isClose = () => {};
   const isOpen = () => {};
 
+  const isEmail = (text)=>{
+    const regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    return regExp.test(text); // 형식에 맞는 경우 true 리턴    
+  }
+
   const loginIdHandler = useCallback((e) => {
-    setId(e.target.value);
+    e.preventDefault();
+    const text = e.target.value;
+     // true vs. false
+    setId(text);
+    
   }, []);
 
   const loginPwdHandler = useCallback((e) => {
@@ -20,6 +29,15 @@ const Login = () => {
   }, []);
 
   const loginClickHandler = useCallback((e) => {
+    // validate email
+    const state = isEmail(id);
+    if(state){
+      // set id
+      console.log('이메일 형식입니다.')      
+    }else{
+      console.log('이메일 형식이 아닙니다.')
+    }
+
     AuthenticationService.login(id, pwd)
       .then((res) => {
         console.log(res.data);
@@ -44,7 +62,7 @@ const Login = () => {
             <AccountBoxIcon />
             <input
               value={id}
-              placeholder="Enter yout ID"
+              placeholder="Enter your ID"
               onChange={loginIdHandler}
             />
           </div>
@@ -53,7 +71,7 @@ const Login = () => {
             <input
               type="password"
               value={pwd}
-              placeholder="Enter yout Password"
+              placeholder="Enter your Password"
               onChange={loginPwdHandler}
             />
           </div>
