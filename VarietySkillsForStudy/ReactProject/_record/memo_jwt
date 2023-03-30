@@ -1,35 +1,38 @@
-***** JWT
-- JWT(Json Web Token)는 웹표준 (RFC 7519)으로 JSON 포맷을 이용해 정보를 가볍고 안전하게 전송하기 위한 
-Claim 기반의 Web Token이다.
+**\*** JWT
+
+- JWT(Json Web Token)는 웹표준 (RFC 7519)으로 JSON 포맷을 이용해 정보를 가볍고 안전하게 전송하기 위한
+  Claim 기반의 Web Token이다.
 - 서버만 알고 있는 Secret Key로 디지털 서명화되어있기 떄문에 신뢰 할 수 있다.
 - Authorization(로그인, SSO)또는 안전한 정보 교환을 위해 사용한다.
 - 토큰 자체에 유저 정보를 담아서 HTTP헤더에 전달하기 때문에 user Session을 유지할 필요가없다.
 
+\*\*\*\*Claim
 
-****Claim
 - 사용자 정보나 데이터 속성 등을 의미.
 - claim기반 토큰의 경우 id, pwd등의 개인정보가 들어있다.
-    + self-contained : 자체 포함, 토큰 자체가 정보
+  - self-contained : 자체 포함, 토큰 자체가 정보
 - JWT는 가장 대표적인 클레임 기반 토큰이다.
 
+**\*** Why JWT?
 
-***** Why JWT?
 - Session의 한계
-    + Cookie는 정보를 클라이언트 측에 저장하고 Session은 정보를 서버측에 저장한다.
-    + 유저수가 너무 많으면 서버에 과부하가 걸린다.
+
+  - Cookie는 정보를 클라이언트 측에 저장하고 Session은 정보를 서버측에 저장한다.
+  - 유저수가 너무 많으면 서버에 과부하가 걸린다.
 
 - Scale Out의 한계
-    + 서버 확장(scale out)시 세션 정보 동기화 문제
 
-- REST API는 Stateless란 지향한다.
-    + Stateless란?
-        -
-    + 사용자의 상태 정보를 저장하지 않는 형태 ex) 세션, 쿠키
+  - 서버 확장(scale out)시 세션 정보 동기화 문제
 
-*****  JWT 형식
-: contina user Authorization + any other information
-: header / payload / signature
+- REST API는 Stateless 지향한다.
 
+  - Stateless란?
 
-ref. 
+  - 사용자의 상태 정보를 저장하지 않는 형태 ex) 세션, 쿠키
+
+**\*** JWT 형식
+: contain user Authorization + any other information
+: header / payload / signature - Base64 Encoding
+
+ref.
 https://velog.io/@dsunni/Spring-Boot-React-JWT%EB%A1%9C-%EA%B0%84%EB%8B%A8%ED%95%9C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
